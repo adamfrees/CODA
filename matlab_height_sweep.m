@@ -1,26 +1,30 @@
+dataFolder = '/home/frees/Dropbox/_UW/CODA/Var_Height/Data'
+codeFolder = '/home/frees/Code/CODA'
+comsolFile = '/home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height.mph'
 mphstart(2036)
 import com.comsol.model.*
 import com.comsol.model.util.*
-model = mphload('/home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height.mph');
+model = mphload(comsolFile);
 
 order = [3,1,5,14,15,6,7,8,9,19,10,11,16,12,17];
 sweepnum = 1;
-looping = true;
 
 target = [1,1,0,0,0.01,0.01,0.01]
 numHeights = 11
 heightList = linspace(0.08,0.09,numHeights)
 
-%Cheap hack:
-%startingVs = [0.3988,0.3482,0.3947,-0.3462,0.1335,-0.3943,-0.1078,-0.01,-0.3577,0.122,-0.3341,-0.101,-0.0841,-0.1032,-0.1]
 [dim, loopLength] = size(order);
-for i=1:loopLength
-    n=order(i);
-    model.physics('es').feature(strcat('pot',int2str(n))).set('V0',startingVs(i));
-end
+
+%To Reset Voltages:
+%startingVs = [0.3988,0.3482,0.3947,-0.3462,0.1335,-0.3943,-0.1078,-0.01,-0.3577,0.122,-0.3341,-0.101,-0.0841,-0.1032,-0.1]
+%for i=1:loopLength
+%    n=order(i);
+%    model.physics('es').feature(strcat('pot',int2str(n))).set('V0',startingVs(i));
+%end
 
 
 for iter=1:numHeights
+    looping = true;
     count = 0;
     height = heightList(iter);
     model.geom('geom1').feature('wp4').set('quickz',height)
@@ -41,25 +45,25 @@ for iter=1:numHeights
             voltList = [voltList,str2double(model.physics('es').feature(strcat('pot',int2str(n))).getString('V0'))];
         end
         
-        
+        acceptanceError = 0.5;
         for i = 0:loopLength
             n = 0;
             if i ~= 0;  n=order(i); end
             if i~=0; volts = str2double(model.physics('es').feature(strcat('pot',int2str(n))).getString('V0')); end
             if i~=0; model.physics('es').feature(strcat('pot',int2str(n))).set('V0',volts-0.0005); end
             if i~=0; voltList(i) = volts-0.005; end
-            fprintf(fopen(strcat('~/Dropbox/_UW/Scale-up/Var_height/',int2str(iter),'sweep',int2str(sweepnum),'.txt'),'a+'),'%g ',voltList);
+            fprintf(fopen([dataFolder,'/height_',int2str(iter),'_sweep_',int2str(sweepnum),'.txt'],'a+'),'%g ',voltList);
             if i~=0; voltList(i) = volts; end
             model.study('std1').run()
             if i~=0; model.physics('es').feature(strcat('pot',int2str(n))).set('V0',volts); end
             
-            model.result.export('data1').set('filename',strcat('/home/frees/Dropbox/_UW/Scale-up/Var_height/',int2str(iter),'run',int2str(count),'.txt'));
+            model.result.export('data1').set('filename',[dataFolder,'/height_',int2str(iter),'_run_',int2str(count),'.txt']);
             model.result.export('data1').run;
-            [out,cmdout] = system(strcat('python /home/frees/Dropbox/_UW/Scale-up/NewSweep/ReadOutput.py ',strcat(' /home/frees/Dropbox/_UW/Scale-up/Var_height/',int2str(iter),'run',int2str(count),'.txt')))
+            [out,cmdout] = system(['python ',codeFolder,'/ReadOutput_DoubleDot.py ',dataFolder,'/height_',int2str(iter),'_run_',int2str(count),'.txt'])
             idx = find(ismember(cmdout,')'),1,'last');
             if cmdout(idx)==')'; cmdout(1:idx)=[]; end
-            fprintf(fopen(strcat('~/Dropbox/_UW/Scale-up/Var_height/',int2str(iter),'sweep',int2str(sweepnum),'.txt'),'a+'),'%g ',str2num(cmdout));
-            fprintf(fopen(strcat('~/Dropbox/_UW/Scale-up/Var_height/',int2str(iter),'sweep',int2str(sweepnum),'.txt'),'a+'),'%s\n','');
+            fprintf(fopen([dataFolder,'/height_',int2str(iter),'_sweep_',int2str(sweepnum),'.txt'],'a+'),'%g ',str2num(cmdout));
+            fprintf(fopen([dataFolder,'/height_',int2str(iter),'_sweep_',int2str(sweepnum),'.txt'],'a+'),'%s\n','');
             count = count+1;
             if i==0
                 str2num(cmdout)
@@ -71,7 +75,7 @@ for iter=1:numHeights
                 nextStep = strrep(nextStep,' ',',')
             end
         end
-        [out,cmdout] = system(strcat(strcat('python /home/frees/Dropbox/_UW/Scale-up/Var_height/findNewPoint.py ',strcat(' /home/frees/Dropbox/_UW/Scale-up/Var_height/',int2str(iter),'sweep',int2str(sweepnum),'.txt')),[' ',nextStep]))
+        [out,cmdout] = system(['python ',codeFolder,'/findNewPoint.py ',dataFolder,'/height_',int2str(iter),'_sweep_',int2str(sweepnum),'.txt',' ',nextStep,' ',acceptanceError])
         idx = find(ismember(cmdout,')'),1,'last');
         if cmdout(idx)==')'; cmdout(1:idx)=[]; end
         myStart=2;
