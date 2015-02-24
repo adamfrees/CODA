@@ -10,7 +10,9 @@ from numpy.linalg import norm
 if __name__ == '__main__':
     filename = str(sys.argv[1])
     acceptanceError = str(sys.argv[2])
-    if acceptanceError = None:
+    try:
+        acceptanceError = float(acceptanceError)
+    except ValueError:
         acceptanceError = 0.5
     target = [float(x) for x in str(sys.argv[2]).split(',')]
     data = regularize(filename,15,[4,5,6])
@@ -20,10 +22,11 @@ if __name__ == '__main__':
     data.useTargetIndices([0,1,4,5,6])
     data.constructModel()
     data.compressedSense()
-    dataListOccupation = data.createNormList() 
+    dataListOccupation = data.createNormList()
+    includeInError=target[0:4] 
     for i,x in enumerate(data.results):
         #print x
-        if x[1]>acceptanceError*norm(target):
+        if x[1]>acceptanceError*norm(includeInError):
         	index = i
         	break
     voltages = map(lambda x: x*(abs(x)>1e-4),data.correspondingVecs)

@@ -54,10 +54,10 @@ class regularize:
         self.M = linalg.lstsq(self.X,self.Y)[0].T
         print self.M
 
-    def compressedSense(self,alphaRange=[1e-5,1000.0],numSamples=7000,max_iter=10000,tol=1e-6):
+    def compressedSense(self,alphaRange=[1e-5,1000.0],numSamples=7000,max_iter=50000,tol=1e-6):
         resultList = []
         for alpha2 in logspace(log(alphaRange[0])/log(10),log(alphaRange[1])/log(10),numSamples):
-            clf = linear_model.Lasso(alpha=alpha2,fit_intercept=False)
+            clf = linear_model.Lasso(alpha=alpha2,fit_intercept=False,max_iter=max_iter,tol=tol)
             clf.fit(self.M,self.target)    
             error = sum(abs(self.target-dot(array(self.M),clf.coef_.reshape((self.ind,1)))))
             oneNorm = sum(abs(clf.coef_))
