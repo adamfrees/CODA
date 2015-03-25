@@ -14,6 +14,8 @@ class regularize:
         dataFile.close()
         self.X = data[:,:ind] #voltage data
         self.Y = data[:,ind:] #target data 
+        print self.X
+        print self.Y
         self.ind = ind
         self.dep =self.Y.shape[1]
         self.controlVecs = []
@@ -23,9 +25,10 @@ class regularize:
             self.Y[:,index] = log(self.Y[:,index])
     
     def declareTarget(self,target):
-        self.target = array(target).reshape((self.dep,1))
+        self.target = array(target).reshape((self.dep,1))#-self.startDeps
         for index in self.logIndexList:
-            self.target[index,0] = log((exp(self.startDeps[index,0])+self.target[index,0])/exp(self.startDeps[index,0]))
+            self.target[index,0] = log(self.target[index,0])#log((exp(self.startDeps[index,0])+self.target[index,0])/exp(self.startDeps[index,0]))
+        self.target = self.target-self.startDeps
     
     def scaleTargets(self,indexList,multiplier):
         for index in indexList:

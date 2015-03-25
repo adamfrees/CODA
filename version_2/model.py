@@ -13,36 +13,38 @@ class model:
         self.session.run('import com.comsol.model.util.*')
     
     def loadModelFile(self,filename):
-        self.session.putvalue('MSCRIPT',"""model = mphload('"""+filename+"""');""")
+        self.session.putvalue('MSCRIPT',"""model = mphload('{FILENAME}');""".format(FILENAME=filename))
         self.session.run('eval(MSCRIPT)')
     
     def changeHeight(self,feature,height,geom='geom1',mesh='mesh1'):
-        self.session.run("""height = """+str(height))
-        mscript = """model.geom('"""+geom+"""').feature('"""+feature+"""').set('quickz',height)
+        args = {'FEATURE' : feature, 'HEIGHT': height, 'GEOM': geom, 'MESH': mesh}
+        self.session.run("""height = {HEIGHT}""".format(**args))
+        mscript = """model.geom('{GEOM}').feature('{FEATURE}').set('quickz',height)
 while true
     try
-        model.mesh('"""+mesh+"""').run()
+        model.mesh('{MESH}').run()
         break
     catch e
         height = height+0.00001
-        model.geom('"""+geom+"""').feature('"""+feature+"""').set('quickz',height)
+        model.geom('{GEOM}').feature('{FEATURE}').set('quickz',height)
     end
-end"""
+end""".format(**args)
         self.session.putvalue('MSCRIPT',mscript)
         self.session.run('eval(MSCRIPT)')
     
     def getVoltage(self, feature):
-        self.session.run("""V = str2double(model.physics('es').feature('"""+feature+"""').getString('V0'))""")
+        self.session.run("""V = str2double(model.physics('es').feature('{FEATURE}').getString('V0'))""".format(FEATURE=feature))
         return self.session.getvalue('V')
     
     def setVoltage(self, feature, value):
-        self.session.run("""model.physics('es').feature('"""+feature+"""').set('V0',"""+str(value)+""")""")
+        self.session.run("""model.physics('es').feature('{FEATURE}').set('V0',{VALUE})""".format(FEATURE=feature,VALUE=str(value)))
     
     def runSimulation(self,study='std1'):
-        self.session.run("""model.study('"""+study+"""').run()""")
+        self.session.run("""model.study('{STUDY}').run()""".format(STUDY=study))
     
     def exportData(self,filename,data='data1'):
-        mscript = """model.result.export('"""+data+"""').set('filename','"""+filename+"""');
-model.result.export('"""+data+"""').run;"""
+        args = {'FILENAME' : filename, 'DATA' : data}
+        mscript = """model.result.export('{DATA}').set('filename','{FILENAME}');
+model.result.export('{DATA}').run;""".format(**args)
         self.session.putvalue('MSCRIPT',mscript)
         self.session.run('eval(MSCRIPT)')

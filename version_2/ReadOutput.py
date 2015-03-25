@@ -18,11 +18,45 @@ import csv
 # The data processing class:
 
 class processData:
-    def __init__(self,potentialDataName):
+    def __init__(self,potentialDataName,modelType=0):
         self.mt = 0.19*9.1e-31 # transverse EM in SI
         self.hbar = 1.0546e-34 # hbar in SI
         self.q = 1.602e-19 # elementary charge
         self.eVtoJ = 1.602e-19 #eV in SI
+        self.modelType = modelType
+        # In this version of the data processing class, the "watershed regions" must
+        # be designated "by hand." To specify the design that is being used, use the
+        # class variable modelType. The correspondence between modelTypes and design
+        # names is listed here:
+        #
+        # modelType  design name
+        # 0          Double Dot (designed by Dan Ward)
+        # 1          Quad Dot (designed by Dan Ward)
+        
+        regionList = []
+        guesses = []
+        tunnelingPairs = []
+        
+        if modelType ==0:
+            regionList += [((0,75),(81,144))]   #LR
+            regionList += [((75,150),(81,144))] #RR
+            regionList += [((62,75),(70,81))]   #LQ
+            regionList += [((75,88),(70,81))]   #RQ
+            guesses = [['leftDot',[65,75]],['rightDot',[80,75]],['leftLead',[50,110]],['rightLead',[90,110]]]
+            tunnelingPairs = [[0,1],[0,2],[1,3]]
+        elif modelType ==1:
+            regionList += [((43,60),(43,70))]   #LQ1
+            regionList += [((66,87),(43,70))]   #RQ1
+            regionList += [((66,87),(80,105))]  #LQ2
+            regionList += [((92,108),(80,105))] #RQ2
+            guesses = [['leftDotQ1',[50,55]],['rightDotQ1',[75,55]],['leftDotQ2',[75,100]],['rightDotQ2',[100,100]]]
+            tunnelingPairs = [[0,1],[2,3]]
+        else:
+            print "Error: Model Type not recognized."
+        
+        self.regionList = regionList
+        self.guesses=guesses
+        self.tunnelingPairs = tunnelingPairs
     
         xVec,yVec, potentialData, densityData = self.readDataFile(potentialDataName)
         
@@ -63,7 +97,6 @@ class processData:
 				startReadingVoltage=True
 				yIndex=0; xIndex=0
 			elif line[1]=='Data': continue
-			#elif line[1]=='2*0.19*me_const/(pi*hbar_const^2)*(e_const*(int1(root.x[Mm],root.y[Mm])+0.0))*(-0.0<int1(root.x[Mm],root.y[Mm]))*(0>=y)+2*0.19*me_const/(pi*hbar_const^2)*(e_const*(V+0.0))*(-0.0<V)*(0<y)':
 			elif line[1]=='2*0.19*me_const/(pi*hbar_const^2)*(e_const*(V+0.0))*(-0.0<V)':
 				startReadingDensity=True
 				yIndex=0; xIndex=0
@@ -77,20 +110,20 @@ class processData:
 		for i,y in enumerate(yHolder):
 			for j,x in enumerate(xHolder):
 				outputLines += str(x)+" "+str(y)+" "+str(voltageHolder[j,i])+"\n"
-		#outputFile = open('Volts.txt','w')
-		#outputFile.writelines(outputLines)
-		#outputFile.close()
 		return xHolder,yHolder,voltageHolder,densityHolder
     
     
     def processPotential(self,guesses,tunnelingPairs):
+        if guesses is None:
+            guesses = self.guesses
+        if tunnelingPairs is None:
+            tunnelingPairs = self.tunnelingPairs
         # First, calculate the target region centers based on the guesses provided:
         self.findCenters()
         self.identifyCenters(guesses)
 
         # Next, specify the watershed partition:
-        self.watershedDoubleDot()
-        self.determineWatershedRegions()
+        self.watershed()
 
         # Finally, compute the quantities of interest:
         self.computeDensities()
@@ -181,41 +214,17 @@ class processData:
             labelList += [[guessLabel,self.centerList[coordIndex]]]
         self.labelList = labelList
 ######################    End of Center-finding stuff
-
-    def watershedDoubleDot(self):
-        watershedMap = zeros(self.effectivePotential.shape)
-        watershedMap[0:75,81:144] = 2*ones((75,63))
-        watershedMap[75:150,81:144] = 3*ones((75,63))
-        watershedMap[62:75,70:81] = 4*ones((13,11))
-        watershedMap[75:88,70:81] = 5*ones((13,11))
-        self.watershedMap = watershedMap
-        #plt.clf()
-        #im1 = plt.imshow(transpose(self.watershedMap),origin='lower')
-        #plt.colorbar(im1)
-        #plt.savefig('watershedMap.png')
-        #plt.cla()
-        #plt.clf()
-        
-    def watershedQuadDot(self):
-        watershedMap = zeros(self.effectivePotential.shape)
-        watershedMap[43:60,43:70] = 2*ones((17,27)) #LQ1
-        watershedMap[66:87,43:70] = 3*ones((21,27)) #RQ1
-        watershedMap[66:87,80:105] = 4*ones((21,25)) #LQ2
-        watershedMap[92:108,80:105] = 5*ones((16,25)) #RQ2
-
-        self.watershedMap = watershedMap
-        #plt.clf()
-        #im1 = plt.imshow(transpose(self.watershedMap),origin='lower',aspect=self.Ly/self.Lx)
-        #plt.colorbar(im1)
-        #plt.savefig('watershedMap.png')
-        #plt.cla()
-        #plt.clf()
-
     
-    def determineWatershedRegions(self):
+    def watershed(self):
+        watershedMap = zeros(self.effectivePotential.shape)
+        for i, region in enumerate(self.regionList):
+            watershedMap[region[0][0]:region[0][1],region[1][0]:region[1][1]] = (i+2)*ones((region[0][1]-region[0][0],region[1][1]-region[1][0]))
+        
+        self.watershedMap = watershedMap
+        
         self.labelListRegions = []
         for i,label in enumerate(self.labelList):
-            self.labelListRegions += [self.watershedMap[label[1][0],label[1][1]]]                    
+            self.labelListRegions += [self.watershedMap[label[1][0],label[1][1]]]                
     
     def computeDensities(self):
         self.densities = []
