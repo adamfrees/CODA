@@ -59,7 +59,7 @@ while height<maxHeight:
         voltages = []
         for gate in order:
             voltages += [dDot.getVoltage('pot'+str(gate))]
-        numTries = 0
+        numTries = 1
         maxTries = 10
         lookingForNextStep = True
         needNewHeight=True
