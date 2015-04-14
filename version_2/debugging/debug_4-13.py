@@ -1,4 +1,6 @@
 from numpy import *
+import sys
+sys.path.append('/home/frees/Code/CODA/version_2')
 import pymatlab
 from model import model
 from ReadOutput import processData
@@ -8,7 +10,6 @@ from operator import add
 from CODA import *
 import os
 
-reloadData = True
 
 dataFolder = '/home/frees/Dropbox/_UW/CODA/Var_Height/Data'
 modelFile = '/home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height.mph'
@@ -16,6 +17,82 @@ modelFile = '/home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height.mph'
 order = [3,1,5,14,15,6,7,8,9,19,10,11,16,12,17]
 
 target = [1.,1.,0,0,0.01,0.01,0.01]
+
+
+
+f = open(dataFolder+'/heightList.txt','r')
+heightData = f.readlines()[-1]
+f.close()
+heightNum = int(heightData[0:heightData.find(':')])
+height = float(heightData[heightData.find(':')+1:-1])
+sweepList = []
+runList = []
+for file in os.listdir(dataFolder):
+    if file.find('height_'+str(heightNum))!=-1 and file.find('sweep')!=-1:
+        sweepList += [file]
+sweepNum = len(sweepList)-1
+f = open(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt','r')
+voltData = f.readline()
+f.close()
+runNum = (len(order)-1)*(sweepNum)
+voltages = voltData.split(' ')[0:len(order)]
+
+dDot = model()
+dDot.loadModelFile(modelFile)
+
+acceptanceError = 0.5
+for gateNum,gate in enumerate(order):
+    dDot.setVoltage('pot'+str(gate),voltages[gateNum])
+
+converged,newStep = findNewPoint(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target,acceptanceError=acceptanceError)
+oldStep = newStep
+
+voltages = []
+for gate in order:
+    voltages += [dDot.getVoltage('pot'+str(gate))]
+
+voltages = map(add,voltages,newStep)
+
+numTries = 0
+maxTries = 10
+lookingForNextStep = True
+needNewHeight=True
+while lookingForNextStep:
+    
+    if numTries>maxTries:
+        raise TransmissionCoefficientError('Transmission coefficient failed to converge - failure in finding new operating point.')
+    numTries +=1
+    try:
+        dDot.runSimulation()
+        updateFiles(dDot, voltages, heightNum, runNum, sweepNum)
+        lookingForNextStep = False
+    except TransmissionCoefficientError as e:
+        f = open('error.log','a')
+        f.write('Attempt '+str(numTries)+': '+e.strerror+'\n')
+        f.close()
+        if sweepNum==0:
+            break
+        acceptanceError = 1.- 0.8*(1.-acceptanceError) #Bringing the acceptable error closer to 1 limits the L1 Norm of the solution, making the step size smaller.
+        voltages = map(lambda x,y: x-y, voltages,oldStep)
+        converged,newStep = findNewPoint(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target,acceptanceError=acceptanceError)
+        voltages = map(add,voltages,newStep)
+        for gateNum,gate in enumerate(order):
+            dDot.setVoltage('pot'+str(gate),str(voltages[gateNum]))
+        oldStep = newStep
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+
 numHeights = 16
 #heightList = linspace(0.08,0.09,numHeights)
 height=0.08
@@ -126,4 +203,4 @@ while height<maxHeight:
             for gateNum, gate in enumerate(order):
                 dDot.setVoltage('pot'+str(gate),voltages[gateNum])
             oldStep = newStep
-            sweepNum+=1
+            sweepNum+=1'''
