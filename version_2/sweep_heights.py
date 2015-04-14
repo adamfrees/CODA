@@ -26,6 +26,9 @@ heightNum = 0
 sweepNum = 0
 runNum = 0
 
+dDot = model()
+dDot.loadModelFile(modelFile)
+
 if reloadData:
     f = open(dataFolder+'/heightList.txt','r')
     heightData = f.readlines()[-1]
@@ -41,11 +44,15 @@ if reloadData:
     f = open(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt','r')
     voltData = f.readline()
     f.close()
-    voltages = voltData.split(' ')[0:len(order)]
+    voltages = [float(x) for x in voltData.split(' ')[0:len(order)]]
     for gateNum,gate in enumerate(order):
         dDot.setVoltage('pot'+str(gate),voltages[gateNum])
     runNum = (len(order)-1)*(sweepNum-1)
     os.remove(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt')
+    dDot.changeHeight('wp4',height)
+
+
+iterateHeight = True
 
 while iterateHeight:
     #If not the first height, find optimal height
@@ -66,17 +73,19 @@ while iterateHeight:
                 heightStep = heightStep*0.8
             if numAttemptsNewHeight>10:
                 raise TransmissionCoefficientError('Transmission coefficient failed to converge - failure in finding new height.')
+        sweepNum = 0
+        runNum = 0
 
     toWrite = str(heightNum)+': '+str(height)+'\n'        
     f = open(dataFolder+'/heightList.txt','a')
     f.write(toWrite)
     f.close()
-
+    
+    iterateSweep = True
+    
     while iterateSweep:
         #If not the first sweep of the height, find new operating point.
         if sweepNum != 0 and not reloadData:
-            if isConverged(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target) or sweepNum>5:
-                break #Goto next height
             acceptableL2Error = 0.5
             lookingForNewSweepOperatingPoint = True
             numAttemptsNewSweepOperatingPoint = 0
@@ -84,7 +93,7 @@ while iterateHeight:
                 numAttemptsNewSweepOperatingPoint +=1
                 newStep = findNewPoint(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target,acceptanceError=acceptableL2Error)
                 voltages = map(add,voltages,newStep)
-                for gateNum,gate in order:
+                for gateNum,gate in enumerate(order):
                     dDot.setVoltage('pot'+str(gate),voltages[gateNum])
                 try:
                     dDot.runSimulation()
@@ -119,3 +128,9 @@ while iterateHeight:
                     voltChange = voltChange/2.
         
         reloadData = False
+        if isConverged(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt',target) or sweepNum>5:
+            iterateSweep = False
+        sweepNum += 1
+    heightNum +=1
+    if height>maxHeight:
+        iterateHeight = False
