@@ -30,7 +30,7 @@ def updateFiles(model, voltages, heightNum, runNum, sweepNum):
     f.write(toWrite)
     f.close()
 
-def findNewPoint(filename,target,acceptanceError=0.5,convergenceTest=0.2):
+def findNewPoint(filename,target,acceptanceError=0.5):
     data = regularize(filename,15,[4,5,6])
     data.makeRelativeData()
     data.declareTarget(target)
@@ -51,7 +51,15 @@ def findNewPoint(filename,target,acceptanceError=0.5,convergenceTest=0.2):
     #        index = i
     #        break
     #index = index #+ (len(voltages)-index)/2
-    isConverged = False
+    return  data.controlVecs[index]
+
+def isConverged(filename,target,convergenceTest=0.2):
+    data = regularize(filename,15,[4,5,6])
+    data.makeRelativeData()
+    data.declareTarget(target)
+    data.useTargetIndices([0,1,4,5,6])
+    converged = False
     if norm(data.target)<convergenceTest:
-        isConverged = True
-    return isConverged, data.controlVecs[index]
+        converged = True
+    return converged
+    

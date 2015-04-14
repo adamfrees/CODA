@@ -8,6 +8,7 @@ from operator import add
 from CODA import *
 import os
 
+
 reloadData = True
 
 dataFolder = '/home/frees/Dropbox/_UW/CODA/Var_Height/Data'
@@ -16,16 +17,14 @@ modelFile = '/home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height.mph'
 order = [3,1,5,14,15,6,7,8,9,19,10,11,16,12,17]
 
 target = [1.,1.,0,0,0.01,0.01,0.01]
-numHeights = 16
-#heightList = linspace(0.08,0.09,numHeights)
-height=0.08
-maxHeight=0.09
-heightStep=0.001
-heightNum=0
 
-dDot = model()
-dDot.loadModelFile(modelFile)
-oldStep = []
+maxHeight=0.09
+
+height=0.08
+
+heightNum = 0
+sweepNum = 0
+runNum = 0
 
 if reloadData:
     f = open(dataFolder+'/heightList.txt','r')
@@ -48,53 +47,56 @@ if reloadData:
     runNum = (len(order)-1)*(sweepNum-1)
     os.remove(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt')
 
-while height<maxHeight:
-    dDot.changeHeight('wp4',height)
-    looping =True
-    if not reloadData:
-        runNum = 0
-        sweepNum = 0
-    reloadData = False
-    while looping:
-        voltages = []
-        for gate in order:
-            voltages += [dDot.getVoltage('pot'+str(gate))]
-        numTries = 1
-        maxTries = 10
-        lookingForNextStep = True
-        needNewHeight=True
-        while lookingForNextStep:
-            acceptanceError = 0.5
-            if numTries>maxTries:
-                raise TransmissionCoefficientError('Transmission coefficient failed to converge - failure in finding new operating point.')
-            numTries +=1
+while iterateHeight:
+    #If not the first height, find optimal height
+    if heightNum != 0 and not reloadData:
+        heightStep=0.001
+        lookingForNewHeight = True
+        numAttemptsNewHeight =0
+        while lookingForNewHeight:
+            numAttemptsNewHeight +=1
+            height += heightStep
+            dDot.changeHeight('wp4',height)
             try:
                 dDot.runSimulation()
                 updateFiles(dDot, voltages, heightNum, runNum, sweepNum)
-                lookingForNextStep = False
+                lookingForNewHeight = False
             except TransmissionCoefficientError:
-                if sweepNum==0:
-                    break
-                acceptanceError = 1.- 0.8*(1.-acceptanceError) #Bringing the acceptable error closer to 1 limits the L1 Norm of the solution, making the step size smaller.
-                voltages = map(lambda x,y: x-y, voltages,oldStep)
-                converged,newStep = findNewPoint(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target,acceptanceError=acceptanceError)
+                height -=heightStep
+                heightStep = heightStep*0.8
+            if numAttemptsNewHeight>10:
+                raise TransmissionCoefficientError('Transmission coefficient failed to converge - failure in finding new height.')
+
+    toWrite = str(heightNum)+': '+str(height)+'\n'        
+    f = open(dataFolder+'/heightList.txt','a')
+    f.write(toWrite)
+    f.close()
+
+    while iterateSweep:
+        #If not the first sweep of the height, find new operating point.
+        if sweepNum != 0 and not reloadData:
+            if isConverged(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target) or sweepNum>5:
+                break #Goto next height
+            acceptableL2Error = 0.5
+            lookingForNewSweepOperatingPoint = True
+            numAttemptsNewSweepOperatingPoint = 0
+            while lookingForNewSweepOperatingPoint:
+                numAttemptsNewSweepOperatingPoint +=1
+                newStep = findNewPoint(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum-1)+'.txt',target,acceptanceError=acceptableL2Error)
                 voltages = map(add,voltages,newStep)
-                oldStep = newStep
-        else:
-            needNewHeight=False
-        if needNewHeight:#this runs if there is a TransmissionCoefficientError on the first sweep on a height
-            if heightNum==0:
-                raise TransmissionCoefficientError('Transmission coefficient failed to converge - bad starting operating point.')
-            else:
-                height -= heightStep
-                heightStep = heightStep*0.6
-                height += heightStep
-                break
-        toWrite = str(heightNum)+': '+str(height)+'\n'        
-        f = open(dataFolder+'/heightList.txt','a')
-        f.write(toWrite)
-        f.close()    
-                 
+                for gateNum,gate in order:
+                    dDot.setVoltage('pot'+str(gate),voltages[gateNum])
+                try:
+                    dDot.runSimulation()
+                    updateFiles(dDot, voltages, heightNum, runNum, sweepNum)
+                    lookingForNewSweepOperatingPoint = False
+                except TransmissionCoefficientError:
+                    acceptableL2Error = 1.- 0.8*(1.-acceptableL2Error) #Bringing the acceptable error closer to 1 limits the L1 Norm of the solution, making the step size smaller.
+                    voltages = map(lambda x,y: x-y, voltages,newStep)
+                if numAttemptsNewSweepOperatingPoint>10:
+                    raise TransmissionCoefficientError('Transmission coefficient failed to converge - failure in finding new sweep Operating point.')
+            
+        #Iterate through runs (perturb voltage on each gate in turn).
         for gateNum, gate in enumerate(order):
             voltChange = -0.0016
             numTries = 0
@@ -116,14 +118,4 @@ while height<maxHeight:
                     voltages[gateNum] -= voltChange
                     voltChange = voltChange/2.
         
-        converged,newStep = findNewPoint(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt',target)
-        if converged or sweepNum>5:
-            looping = False
-            height +=heightStep
-            heightNum += 1
-        else:
-            voltages = map(add,voltages,newStep)
-            for gateNum, gate in enumerate(order):
-                dDot.setVoltage('pot'+str(gate),voltages[gateNum])
-            oldStep = newStep
-            sweepNum+=1
+        reloadData = False
