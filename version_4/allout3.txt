@@ -1,0 +1,14 @@
+COMSOL 5.0 (Build: 244) Multiphysics Server started listening on port 2036
+Use the console command 'close' to exit the program
+A client with username 'frees' has logged on to the server from 'obsidian' using port 2036
+Loading model: /home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height_3.mph (Model)
+A client with username 'frees' has disconnected from 'obsidian'
+COMSOL 5.0 (Build: 244) Multiphysics Server started listening on port 2036
+Use the console command 'close' to exit the program
+A client with username 'frees' has logged on to the server from 'obsidian' using port 2036
+Loading model: /home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height_3.mph (Model)
+First run:  2736.49174786
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000000000000000, pid=17470

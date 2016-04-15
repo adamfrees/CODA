@@ -1,0 +1,2145 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f5f60abb4cd, pid=11892, tid=140047072360192
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_67-b01) (build 1.7.0_67-b01)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.65-b04 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libcsmesh.so+0x1d34cd]  Vector::~Vector()+0x3eed
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f5f90afb800):  JavaThread "pool-6-thread-1" [_thread_in_native, id=12083, stack(0x00007f5f3fbff000,0x00007f5f40000000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x00007f626a64b584
+
+Registers:
+RAX=0x000000007a42b600, RBX=0x0000000000000100, RCX=0x00007f5e984f0580, RDX=0x0000000000000102
+RSP=0x00007f5f3fffd870, RBP=0x00007f5f3fffda70, RSI=0x0000000000000103, RDI=0x00000000000000da
+R8 =0x00007f5e984f0580, R9 =0x00000000000000fd, R10=0x000000000000006e, R11=0x00007f5e984f0580
+R12=0x00000000000007ff, R13=0x0000000000000000, R14=0x00007f5e58524920, R15=0x0000000000000060
+RIP=0x00007f5f60abb4cd, EFLAGS=0x0000000000010206, CSGSFS=0x0000000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f5f3fffd870)
+0x00007f5f3fffd870:   00007f5f3fffda10 00007f5e6e4f37b0
+0x00007f5f3fffd880:   00007f5e63fa2eb0 00007f5e63e95c30
+0x00007f5f3fffd890:   00007f5e58328090 00007f5e69b89040
+0x00007f5f3fffd8a0:   00007f5e59059f80 00007f5e00000103
+0x00007f5f3fffd8b0:   000000000000016e ffff80a0000000fa
+0x00007f5f3fffd8c0:   0000000000000103 0000000000000001
+0x00007f5f3fffd8d0:   00007f5e6e04f8f0 0000000000000103
+0x00007f5f3fffd8e0:   00007f5e58ea9ee0 00007f5e58ea9ee0
+0x00007f5f3fffd8f0:   00007f5e58eaaa50 0000000000000000
+0x00007f5f3fffd900:   0000000000000103 00007f5f3fffdb58
+0x00007f5f3fffd910:   00007f5f00000103 00007f5f38000020
+0x00007f5f3fffd920:   00000000000be770 000000000001293d
+0x00007f5f3fffd930:   000000000002f9d7 0000000000000004
+0x00007f5f3fffd940:   00007f5e5b29bef8 0000000000000060
+0x00007f5f3fffd950:   00007f5f3fffdaa8 00000000000be75c
+0x00007f5f3fffd960:   00007f5f3fffda10 000000d900000800
+0x00007f5f3fffd970:   00007f5e00000025 00007f5e984f0580
+0x00007f5f3fffd980:   00007f5e984f0d98 00007f5e984f0d98
+0x00007f5f3fffd990:   0000064e00000004 00000000000000be
+0x00007f5f3fffd9a0:   0000000000000017 0000008e0000012c
+0x00007f5f3fffd9b0:   0000000000000002 00007f5f3fffd9df
+0x00007f5f3fffd9c0:   00007f5e6e003d40 00007f5f3fffdaa8
+0x00007f5f3fffd9d0:   00007f5f0000007e 0000000000000139
+0x00007f5f3fffd9e0:   0000019400000000 0000000000000027
+0x00007f5f3fffd9f0:   0000000000000004 0000007b00000095
+0x00007f5f3fffda00:   0000000000000000 00007f5f38000020
+0x00007f5f3fffda10:   00007f5e881d38a0 00007f5e881d98a0
+0x00007f5f3fffda20:   00007f5e881d98a0 0000080059034501
+0x00007f5f3fffda30:   000005c2000007ff 000000c20000016e
+0x00007f5f3fffda40:   0000000000000058 00007f5e58f46490
+0x00007f5f3fffda50:   00007f5e58f6d698 00007f5e58f6d698
+0x00007f5f3fffda60:   0000001800000017 00007f5e590345b0 
+
+Instructions: (pc=0x00007f5f60abb4cd)
+0x00007f5f60abb4ad:   a0 fe ff ff 0f 83 56 01 00 00 48 63 f6 48 8b 8d
+0x00007f5f60abb4bd:   08 ff ff ff 83 bd a0 fe ff ff 00 48 63 44 b0 fc
+0x00007f5f60abb4cd:   8b 54 c1 04 89 54 f1 f8 b8 00 00 00 00 7e 27 48
+0x00007f5f60abb4dd:   8b b5 90 fe ff ff 48 8b 8d 08 ff ff ff 8b 14 c1 
+
+Register to memory mapping:
+
+RAX=0x000000007a42b600 is an unknown value
+RBX=0x0000000000000100 is an unknown value
+RCX=0x00007f5e984f0580 is an unknown value
+RDX=0x0000000000000102 is an unknown value
+RSP=0x00007f5f3fffd870 is pointing into the stack for thread: 0x00007f5f90afb800
+RBP=0x00007f5f3fffda70 is pointing into the stack for thread: 0x00007f5f90afb800
+RSI=0x0000000000000103 is an unknown value
+RDI=0x00000000000000da is an unknown value
+R8 =0x00007f5e984f0580 is an unknown value
+R9 =0x00000000000000fd is an unknown value
+R10=0x000000000000006e is an unknown value
+R11=0x00007f5e984f0580 is an unknown value
+R12=0x00000000000007ff is an unknown value
+R13=0x0000000000000000 is an unknown value
+R14=0x00007f5e58524920 is an unknown value
+R15=0x0000000000000060 is an unknown value
+
+
+Stack: [0x00007f5f3fbff000,0x00007f5f40000000],  sp=0x00007f5f3fffd870,  free space=4090k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libcsmesh.so+0x1d34cd]  Vector::~Vector()+0x3eed
+C  [libcsmesh.so+0x1df788]  Vector::~Vector()+0x101a8
+C  [libcsmesh.so+0x211da2]  Vector::~Vector()+0x427c2
+C  [libcsmesh.so+0x12c43b]  Mesh::init(Geom const&, flbase::Prop&, flbase::Prop&, flutil::RunInfo&)+0xeb
+C  [libcsjni.so+0x14ded6]  Java_com_comsol_nativejni_mesh_Mesh_init+0x1c6
+j  com.comsol.nativejni.mesh.Mesh.init(Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/server/FlRunnable;Lcom/comsol/nativejni/CPointer;)V+0
+j  com.comsol.nativejni.mesh.Mesh.init(Lcom/comsol/nativejni/geom/Geom;Lcom/comsol/nativejni/util/Prop;Lcom/comsol/nativejni/util/Prop;Lcom/comsol/nativejni/server/FlRunnable;)V+24
+j  com.comsol.nativemph.mesh.Mesh.a(Lcom/comsol/nativemph/geom/Geom;Lcom/comsol/nativeutil/r;Lcom/comsol/nativeutil/r;Lcom/comsol/nativemph/mesh/f;)Lcom/comsol/nativemph/mesh/Mesh;+60
+j  com.comsol.nativemph.mesh.f.g()V+18
+j  com.comsol.nativeutil.runnable.f.run()V+116
+j  com.comsol.geommesh.mesh.MeshFreeTet.doBuild(Lcom/comsol/model/operations/MeshBuildData;Lcom/comsol/geommesh/mesh/i;Z)Lcom/comsol/nativemph/mesh/Mesh;+172
+j  com.comsol.geommesh.mesh.MeshOperation.build(Lcom/comsol/model/operations/MeshBuildData;Lcom/comsol/model/dbimodel/MeshSequence;Lcom/comsol/model/dbimodel/MeshFeature;Z)V+374
+j  com.comsol.model.method.MeshSequenceMethod.a(Lcom/comsol/model/operations/MeshBuildData;Lcom/comsol/model/dbimodel/MeshFeature;Ljava/util/ListIterator;Lcom/comsol/model/dbimodel/MeshSequence;)Ljava/util/ArrayList;+284
+j  com.comsol.model.method.MeshSequenceMethod.run(Ljava/lang/String;)V+914
+j  com.comsol.model.internal.impl.MeshSequenceImpl.l(Ljava/lang/String;)V+5
+j  com.comsol.model.internal.impl.MeshSequenceImpl.M()V+2
+j  com.comsol.model.internal.impl.MeshSequenceImpl$1.a(Lcom/comsol/model/internal/impl/MeshSequenceImpl;)Ljava/lang/Object;+107
+j  com.comsol.model.internal.impl.MeshSequenceImpl$1.execute(Lorg/eclipse/emf/ecore/EObject;)Ljava/lang/Object;+5
+j  com.comsol.model.clientserver.ClientManager$1.call()Ljava/lang/Object;+18
+j  java.util.concurrent.FutureTask.run()V+42
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+95
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x5ffb65]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x365
+V  [libjvm.so+0x5fe5c8]  JavaCalls::call(JavaValue*, methodHandle, JavaCallArguments*, Thread*)+0x28
+V  [libjvm.so+0x5fe897]  JavaCalls::call_virtual(JavaValue*, KlassHandle, Symbol*, Symbol*, JavaCallArguments*, Thread*)+0x197
+V  [libjvm.so+0x5fe9b7]  JavaCalls::call_virtual(JavaValue*, Handle, KlassHandle, Symbol*, Symbol*, Thread*)+0x47
+V  [libjvm.so+0x67b445]  thread_entry(JavaThread*, Thread*)+0xe5
+V  [libjvm.so+0x958d9f]  JavaThread::thread_main_inner()+0xdf
+V  [libjvm.so+0x958ea5]  JavaThread::run()+0xf5
+V  [libjvm.so+0x81f988]  java_start(Thread*)+0x108
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  com.comsol.nativejni.mesh.Mesh.init(Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/CPointer;Lcom/comsol/nativejni/server/FlRunnable;Lcom/comsol/nativejni/CPointer;)V+0
+j  com.comsol.nativejni.mesh.Mesh.init(Lcom/comsol/nativejni/geom/Geom;Lcom/comsol/nativejni/util/Prop;Lcom/comsol/nativejni/util/Prop;Lcom/comsol/nativejni/server/FlRunnable;)V+24
+j  com.comsol.nativemph.mesh.Mesh.a(Lcom/comsol/nativemph/geom/Geom;Lcom/comsol/nativeutil/r;Lcom/comsol/nativeutil/r;Lcom/comsol/nativemph/mesh/f;)Lcom/comsol/nativemph/mesh/Mesh;+60
+j  com.comsol.nativemph.mesh.f.g()V+18
+j  com.comsol.nativeutil.runnable.f.run()V+116
+j  com.comsol.geommesh.mesh.MeshFreeTet.doBuild(Lcom/comsol/model/operations/MeshBuildData;Lcom/comsol/geommesh/mesh/i;Z)Lcom/comsol/nativemph/mesh/Mesh;+172
+j  com.comsol.geommesh.mesh.MeshOperation.build(Lcom/comsol/model/operations/MeshBuildData;Lcom/comsol/model/dbimodel/MeshSequence;Lcom/comsol/model/dbimodel/MeshFeature;Z)V+374
+j  com.comsol.model.method.MeshSequenceMethod.a(Lcom/comsol/model/operations/MeshBuildData;Lcom/comsol/model/dbimodel/MeshFeature;Ljava/util/ListIterator;Lcom/comsol/model/dbimodel/MeshSequence;)Ljava/util/ArrayList;+284
+j  com.comsol.model.method.MeshSequenceMethod.run(Ljava/lang/String;)V+914
+j  com.comsol.model.internal.impl.MeshSequenceImpl.l(Ljava/lang/String;)V+5
+j  com.comsol.model.internal.impl.MeshSequenceImpl.M()V+2
+j  com.comsol.model.internal.impl.MeshSequenceImpl$1.a(Lcom/comsol/model/internal/impl/MeshSequenceImpl;)Ljava/lang/Object;+107
+j  com.comsol.model.internal.impl.MeshSequenceImpl$1.execute(Lorg/eclipse/emf/ecore/EObject;)Ljava/lang/Object;+5
+j  com.comsol.model.clientserver.ClientManager$1.call()Ljava/lang/Object;+18
+j  java.util.concurrent.FutureTask.run()V+42
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+95
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f5f80082800 JavaThread "pool-5-thread-2" [_thread_blocked, id=13136, stack(0x00007f5fbb2f4000,0x00007f5fbb6f5000)]
+  0x00007f5f380c8000 JavaThread "pool-7-thread-1" [_thread_blocked, id=12152, stack(0x00007f5ee57f6000,0x00007f5ee5bf7000)]
+  0x00007f5f3809f000 JavaThread "pool-4-thread-1" [_thread_blocked, id=12135, stack(0x00007f5f3f7fe000,0x00007f5f3fbff000)]
+=>0x00007f5f90afb800 JavaThread "pool-6-thread-1" [_thread_in_native, id=12083, stack(0x00007f5f3fbff000,0x00007f5f40000000)]
+  0x00007f5f84250800 JavaThread "pool-1-thread-1" [_thread_blocked, id=12073, stack(0x00007f5fbb6fc000,0x00007f5fbbafd000)]
+  0x00007f5f40001000 JavaThread "http-bio-2036-exec-1" daemon [_thread_in_native, id=12071, stack(0x00007f5fba6df000,0x00007f5fbaae0000)]
+  0x00007f5f6401e000 JavaThread "Worker-1" [_thread_blocked, id=12045, stack(0x00007f5fb8727000,0x00007f5fb8b28000)]
+  0x00007f6020115800 JavaThread "http-bio-2036-AsyncTimeout" daemon [_thread_blocked, id=12010, stack(0x00007f5f54242000,0x00007f5f54643000)]
+  0x00007f6020604000 JavaThread "http-bio-2036-Acceptor-0" daemon [_thread_in_native, id=12009, stack(0x00007f5f54643000,0x00007f5f54a44000)]
+  0x00007f6020602000 JavaThread "ContainerBackgroundProcessor[StandardEngine[Catalina]]" daemon [_thread_blocked, id=12008, stack(0x00007f5f54a44000,0x00007f5f54e45000)]
+  0x00007f5f84660000 JavaThread "Thread-9" daemon [_thread_in_Java, id=12007, stack(0x00007f5f54e45000,0x00007f5f55246000)]
+  0x00007f5f845d2800 JavaThread "clientcommunicator" daemon [_thread_blocked, id=12006, stack(0x00007f5f55246000,0x00007f5f55647000)]
+  0x00007f5f84401000 JavaThread "Worker-0" [_thread_blocked, id=12000, stack(0x00007f5fb8d3a000,0x00007f5fb913b000)]
+  0x00007f5f78219800 JavaThread "Worker-JM" [_thread_blocked, id=11994, stack(0x00007f5fb913b000,0x00007f5fb953c000)]
+  0x00007f5f78241800 JavaThread "Bundle File Closer" daemon [_thread_blocked, id=11986, stack(0x00007f5fb9acf000,0x00007f5fb9ed0000)]
+  0x00007f5f84245000 JavaThread "Start Level Event Dispatcher" daemon [_thread_blocked, id=11984, stack(0x00007f5fb9edd000,0x00007f5fba2de000)]
+  0x00007f5f84244000 JavaThread "Framework Event Dispatcher" daemon [_thread_blocked, id=11983, stack(0x00007f5fba2de000,0x00007f5fba6df000)]
+  0x00007f5f841b5800 JavaThread "Framework Active Thread" [_thread_blocked, id=11981, stack(0x00007f5fbaae6000,0x00007f5fbaee7000)]
+  0x00007f5f840ef000 JavaThread "Thread-4" daemon [_thread_in_native, id=11978, stack(0x00007f5fbaee7000,0x00007f5fbb2e8000)]
+  0x00007f6020571800 JavaThread "GC Daemon" daemon [_thread_blocked, id=11943, stack(0x00007f5fbbb20000,0x00007f5fbbf21000)]
+  0x00007f60200c1000 JavaThread "Service Thread" daemon [_thread_blocked, id=11935, stack(0x00007f5fd07c4000,0x00007f5fd0bc5000)]
+  0x00007f60200be800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=11934, stack(0x00007f5fd0bc5000,0x00007f5fd0cc6000)]
+  0x00007f60200bb800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=11933, stack(0x00007f5fd0cc6000,0x00007f5fd0dc7000)]
+  0x00007f60200b9800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=11932, stack(0x00007f5fd0dc7000,0x00007f5fd11c8000)]
+  0x00007f602009a000 JavaThread "Finalizer" daemon [_thread_blocked, id=11931, stack(0x00007f5fd1492000,0x00007f5fd1893000)]
+  0x00007f6020098000 JavaThread "Reference Handler" daemon [_thread_blocked, id=11930, stack(0x00007f5fd1893000,0x00007f5fd1c94000)]
+  0x00007f602000a800 JavaThread "main" [_thread_blocked, id=11893, stack(0x00007f60271c7000,0x00007f60275c8000)]
+
+Other Threads:
+  0x00007f6020093800 VMThread [stack: 0x00007f5fd1c94000,0x00007f5fd1d95000] [id=11929]
+  0x00007f60200cb800 WatcherThread [stack: 0x00007f5fd06c3000,0x00007f5fd07c4000] [id=11936]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 349184K, used 196249K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 56% used [0x00000000eaa80000,0x00000000f6a0e610,0x00000000fff00000)
+  from space 512K, 18% used [0x00000000fff00000,0x00000000fff18000,0x00000000fff80000)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+
+Card table byte_map: [0x00007f6025e87000,0x00007f6026108000] byte_map_base: 0x00007f6025907000
+
+Polling page: 0x00007f6029579000
+
+Code Cache  [0x00007f601d000000, 0x00007f601da90000, 0x00007f6020000000)
+ total_blobs=2914 nmethods=2308 adapters=556 free_code_cache=38623Kb largest_free_block=39288448
+
+Compilation events (10 events):
+Event: 3355.308 Thread 0x00007f60200be800 2685             com.comsol.nativeutil.properties.bw::getSelPropNames (63 bytes)
+Event: 3355.329 Thread 0x00007f60200be800 nmethod 2685 0x00007f601d588c50 code [0x00007f601d588de0, 0x00007f601d589048]
+Event: 3431.534 Thread 0x00007f60200bb800 2686             com.comsol.nativeutil.properties.bd::getKey (77 bytes)
+Event: 3431.556 Thread 0x00007f60200be800 2687             java.util.Arrays::equals (61 bytes)
+Event: 3431.576 Thread 0x00007f60200be800 nmethod 2687 0x00007f601d822490 code [0x00007f601d8225e0, 0x00007f601d822858]
+Event: 3431.695 Thread 0x00007f60200bb800 nmethod 2686 0x00007f601da634d0 code [0x00007f601da636c0, 0x00007f601da64608]
+Event: 3469.525 Thread 0x00007f60200be800 2688             java.io.OutputStream::write (79 bytes)
+Event: 3469.540 Thread 0x00007f60200be800 nmethod 2688 0x00007f601d8fad90 code [0x00007f601d8faee0, 0x00007f601d8fb0a8]
+Event: 3500.978 Thread 0x00007f60200bb800 2689             com.comsol.model.internal.impl.MeshProblemFeatureImpl::eStaticClass (4 bytes)
+Event: 3500.980 Thread 0x00007f60200bb800 nmethod 2689 0x00007f601d3d0510 code [0x00007f601d3d0640, 0x00007f601d3d0698]
+
+GC Heap History (10 events):
+Event: 3531.256 GC heap before
+{Heap before GC invocations=14465 (full 28):
+ PSYoungGen      total 349184K, used 348736K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 100% used [0x00000000eaa80000,0x00000000fff00000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff80000,0x00000000fff90000,0x0000000100000000)
+  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+Event: 3531.277 GC heap after
+Heap after GC invocations=14465 (full 28):
+ PSYoungGen      total 349184K, used 32K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 0% used [0x00000000eaa80000,0x00000000eaa80000,0x00000000fff00000)
+  from space 512K, 6% used [0x00000000fff00000,0x00000000fff08000,0x00000000fff80000)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+}
+Event: 3531.398 GC heap before
+{Heap before GC invocations=14466 (full 28):
+ PSYoungGen      total 349184K, used 348704K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 100% used [0x00000000eaa80000,0x00000000fff00000,0x00000000fff00000)
+  from space 512K, 6% used [0x00000000fff00000,0x00000000fff08000,0x00000000fff80000)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+Event: 3531.438 GC heap after
+Heap after GC invocations=14466 (full 28):
+ PSYoungGen      total 349184K, used 64K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 0% used [0x00000000eaa80000,0x00000000eaa80000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff80000,0x00000000fff90000,0x0000000100000000)
+  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+}
+Event: 3531.792 GC heap before
+{Heap before GC invocations=14467 (full 28):
+ PSYoungGen      total 349184K, used 348736K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 100% used [0x00000000eaa80000,0x00000000fff00000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff80000,0x00000000fff90000,0x0000000100000000)
+  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+Event: 3531.829 GC heap after
+Heap after GC invocations=14467 (full 28):
+ PSYoungGen      total 349184K, used 64K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 0% used [0x00000000eaa80000,0x00000000eaa80000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff00000,0x00000000fff10000,0x00000000fff80000)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+}
+Event: 3532.214 GC heap before
+{Heap before GC invocations=14468 (full 28):
+ PSYoungGen      total 349184K, used 348736K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 100% used [0x00000000eaa80000,0x00000000fff00000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff00000,0x00000000fff10000,0x00000000fff80000)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+Event: 3532.286 GC heap after
+Heap after GC invocations=14468 (full 28):
+ PSYoungGen      total 349184K, used 64K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 0% used [0x00000000eaa80000,0x00000000eaa80000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff80000,0x00000000fff90000,0x0000000100000000)
+  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+}
+Event: 3532.671 GC heap before
+{Heap before GC invocations=14469 (full 28):
+ PSYoungGen      total 349184K, used 348736K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 100% used [0x00000000eaa80000,0x00000000fff00000,0x00000000fff00000)
+  from space 512K, 12% used [0x00000000fff80000,0x00000000fff90000,0x0000000100000000)
+  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+Event: 3532.692 GC heap after
+Heap after GC invocations=14469 (full 28):
+ PSYoungGen      total 349184K, used 96K [0x00000000eaa80000, 0x0000000100000000, 0x0000000100000000)
+  eden space 348672K, 0% used [0x00000000eaa80000,0x00000000eaa80000,0x00000000fff00000)
+  from space 512K, 18% used [0x00000000fff00000,0x00000000fff18000,0x00000000fff80000)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 104960K, used 89252K [0x00000000c0000000, 0x00000000c6680000, 0x00000000eaa80000)
+  object space 104960K, 85% used [0x00000000c0000000,0x00000000c5729238,0x00000000c6680000)
+ PSPermGen       total 121856K, used 119301K [0x00000000b0000000, 0x00000000b7700000, 0x00000000c0000000)
+  object space 121856K, 97% used [0x00000000b0000000,0x00000000b74817a0,0x00000000b7700000)
+}
+
+Deoptimization events (10 events):
+Event: 1101.538 Thread 0x00007f5f90afb800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f601d6c7ed8 method=org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl$EObjectInputStream.readEPackage()Lorg/eclipse/emf/ecore/resource/impl/BinaryResourceImpl$EObjectInputStream$EPackage
+Event: 1516.821 Thread 0x00007f5f80082800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f601d17fc14 method=java.util.HashMap.removeEntryForKey(Ljava/lang/Object;)Ljava/util/HashMap$Entry; @ 85
+Event: 1516.851 Thread 0x00007f5f80082800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f601d17fc14 method=java.util.HashMap.removeEntryForKey(Ljava/lang/Object;)Ljava/util/HashMap$Entry; @ 85
+Event: 1602.277 Thread 0x00007f5f90afb800 Uncommon trap: reason=predicate action=maybe_recompile pc=0x00007f601d9483e4 method=com.comsol.applapi.t.a(ILjava/util/List;[Lcom/comsol/model/dbimodel/Selection;)V @ 50
+Event: 1621.653 Thread 0x00007f5f90afb800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f601d6c7ed8 method=org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl$EObjectInputStream.readEPackage()Lorg/eclipse/emf/ecore/resource/impl/BinaryResourceImpl$EObjectInputStream$EPackage
+Event: 2051.482 Thread 0x00007f5f90afb800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f601d6c7ed8 method=org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl$EObjectInputStream.readEPackage()Lorg/eclipse/emf/ecore/resource/impl/BinaryResourceImpl$EObjectInputStream$EPackage
+Event: 2491.349 Thread 0x00007f5f90afb800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x00007f601d99619c method=com.comsol.applapi.t.a(ILjava/util/List;[Lcom/comsol/model/dbimodel/Selection;)V @ 83
+Event: 2491.350 Thread 0x00007f5f90afb800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x00007f601d99619c method=com.comsol.applapi.t.a(ILjava/util/List;[Lcom/comsol/model/dbimodel/Selection;)V @ 83
+Event: 2491.353 Thread 0x00007f5f90afb800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x00007f601d99619c method=com.comsol.applapi.t.a(ILjava/util/List;[Lcom/comsol/model/dbimodel/Selection;)V @ 83
+Event: 2491.354 Thread 0x00007f5f90afb800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x00007f601d99619c method=com.comsol.applapi.t.a(ILjava/util/List;[Lcom/comsol/model/dbimodel/Selection;)V @ 83
+
+Internal exceptions (10 events):
+Event: 2906.020 Thread 0x00007f5f84250800 Threw 0x00000000f7e91be0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/runtime/reflection.cpp:1030
+Event: 2931.607 Thread 0x00007f5f84250800 Threw 0x00000000fc347dd0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/runtime/reflection.cpp:1030
+Event: 2965.847 Thread 0x00007f5f90afb800 Threw 0x00000000eb8855d0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/prims/jni.cpp:743
+Event: 2965.848 Thread 0x00007f5f90afb800 Threw 0x00000000eb8ad9b0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/prims/jni.cpp:743
+Event: 2965.849 Thread 0x00007f5f90afb800 Threw 0x00000000eb8d5da0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/prims/jni.cpp:743
+Event: 2965.849 Thread 0x00007f5f90afb800 Threw 0x00000000eb8fe180 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/prims/jni.cpp:743
+Event: 3354.942 Thread 0x00007f5f90afb800 Threw 0x00000000ee157c78 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/prims/jni.cpp:743
+Event: 3354.977 Thread 0x00007f5f84250800 Threw 0x00000000f03dc550 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/runtime/reflection.cpp:1030
+Event: 3394.611 Thread 0x00007f5f84250800 Threw 0x00000000eef20e20 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/runtime/reflection.cpp:1030
+Event: 3431.230 Thread 0x00007f5f84250800 Threw 0x00000000f3a681f0 at /HUDSON/workspace/7u-2-build-linux-amd64/jdk7u67/1368/hotspot/src/share/vm/runtime/reflection.cpp:1030
+
+Events (10 events):
+Event: 3531.255 Executing VM operation: ParallelGCFailedAllocation
+Event: 3531.277 Executing VM operation: ParallelGCFailedAllocation done
+Event: 3531.398 Executing VM operation: ParallelGCFailedAllocation
+Event: 3531.438 Executing VM operation: ParallelGCFailedAllocation done
+Event: 3531.790 Executing VM operation: ParallelGCFailedAllocation
+Event: 3531.830 Executing VM operation: ParallelGCFailedAllocation done
+Event: 3532.213 Executing VM operation: ParallelGCFailedAllocation
+Event: 3532.286 Executing VM operation: ParallelGCFailedAllocation done
+Event: 3532.669 Executing VM operation: ParallelGCFailedAllocation
+Event: 3532.692 Executing VM operation: ParallelGCFailedAllocation done
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 18223717                           /usr/local/comsol50/multiphysics/java/glnxa64/jre/bin/java
+00600000-00601000 rw-p 00000000 08:01 18223717                           /usr/local/comsol50/multiphysics/java/glnxa64/jre/bin/java
+021d5000-04a45000 rw-p 00000000 00:00 0                                  [heap]
+b0000000-b7700000 rw-p 00000000 00:00 0 
+b7700000-ba580000 ---p 00000000 00:00 0 
+ba580000-c0000000 rw-p 00000000 00:00 0 
+c0000000-c6680000 rw-p 00000000 00:00 0 
+c6680000-eaa80000 rw-p 00000000 00:00 0 
+eaa80000-100000000 rw-p 00000000 00:00 0 
+7f5e58000000-7f5e5bfec000 rw-p 00000000 00:00 0 
+7f5e5bfec000-7f5e5c000000 ---p 00000000 00:00 0 
+7f5e5c000000-7f5e5da71000 rw-p 00000000 00:00 0 
+7f5e5da71000-7f5e60000000 ---p 00000000 00:00 0 
+7f5e60000000-7f5e64000000 rw-p 00000000 00:00 0 
+7f5e68000000-7f5e6beec000 rw-p 00000000 00:00 0 
+7f5e6beec000-7f5e6c000000 ---p 00000000 00:00 0 
+7f5e6c000000-7f5e6fe7a000 rw-p 00000000 00:00 0 
+7f5e6fe7a000-7f5e70000000 ---p 00000000 00:00 0 
+7f5e70000000-7f5e70021000 rw-p 00000000 00:00 0 
+7f5e70021000-7f5e74000000 ---p 00000000 00:00 0 
+7f5e74000000-7f5e77fb8000 rw-p 00000000 00:00 0 
+7f5e77fb8000-7f5e78000000 ---p 00000000 00:00 0 
+7f5e78000000-7f5e7bffa000 rw-p 00000000 00:00 0 
+7f5e7bffa000-7f5e7c000000 ---p 00000000 00:00 0 
+7f5e80000000-7f5e83eb6000 rw-p 00000000 00:00 0 
+7f5e83eb6000-7f5e84000000 ---p 00000000 00:00 0 
+7f5e88000000-7f5e8bbcd000 rw-p 00000000 00:00 0 
+7f5e8bbcd000-7f5e8c000000 ---p 00000000 00:00 0 
+7f5e8c000000-7f5e8fcb3000 rw-p 00000000 00:00 0 
+7f5e8fcb3000-7f5e90000000 ---p 00000000 00:00 0 
+7f5e90000000-7f5e93c51000 rw-p 00000000 00:00 0 
+7f5e93c51000-7f5e94000000 ---p 00000000 00:00 0 
+7f5e966d0000-7f5e97b3e000 r-xp 00000000 08:01 8005173                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcspardiso.so
+7f5e97b3e000-7f5e97d3e000 ---p 0146e000 08:01 8005173                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcspardiso.so
+7f5e97d3e000-7f5e97d97000 rw-p 0146e000 08:01 8005173                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcspardiso.so
+7f5e97d97000-7f5e97da6000 rw-p 00000000 00:00 0 
+7f5e97da8000-7f5e97e00000 r-xp 00000000 08:01 8005125                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmetis.so
+7f5e97e00000-7f5e97fff000 ---p 00058000 08:01 8005125                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmetis.so
+7f5e97fff000-7f5e98000000 rw-p 00057000 08:01 8005125                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmetis.so
+7f5e98000000-7f5e9be49000 rw-p 00000000 00:00 0 
+7f5e9be49000-7f5e9c000000 ---p 00000000 00:00 0 
+7f5e9c000000-7f5e9fff4000 rw-p 00000000 00:00 0 
+7f5e9fff4000-7f5ea0000000 ---p 00000000 00:00 0 
+7f5ea0000000-7f5ea0021000 rw-p 00000000 00:00 0 
+7f5ea0021000-7f5ea4000000 ---p 00000000 00:00 0 
+7f5ea4000000-7f5ea4021000 rw-p 00000000 00:00 0 
+7f5ea4021000-7f5ea8000000 ---p 00000000 00:00 0 
+7f5ea8000000-7f5eabfb7000 rw-p 00000000 00:00 0 
+7f5eabfb7000-7f5eac000000 ---p 00000000 00:00 0 
+7f5eac000000-7f5eafc13000 rw-p 00000000 00:00 0 
+7f5eafc13000-7f5eb0000000 ---p 00000000 00:00 0 
+7f5eb0000000-7f5eb3f9b000 rw-p 00000000 00:00 0 
+7f5eb3f9b000-7f5eb4000000 ---p 00000000 00:00 0 
+7f5eb4000000-7f5eb7aa3000 rw-p 00000000 00:00 0 
+7f5eb7aa3000-7f5eb8000000 ---p 00000000 00:00 0 
+7f5eb8000000-7f5ebbff3000 rw-p 00000000 00:00 0 
+7f5ebbff3000-7f5ebc000000 ---p 00000000 00:00 0 
+7f5ebc000000-7f5ebfc41000 rw-p 00000000 00:00 0 
+7f5ebfc41000-7f5ec0000000 ---p 00000000 00:00 0 
+7f5ec0000000-7f5ec3f65000 rw-p 00000000 00:00 0 
+7f5ec3f65000-7f5ec4000000 ---p 00000000 00:00 0 
+7f5ec4000000-7f5ec7cbf000 rw-p 00000000 00:00 0 
+7f5ec7cbf000-7f5ec8000000 ---p 00000000 00:00 0 
+7f5ec8000000-7f5ecbf97000 rw-p 00000000 00:00 0 
+7f5ecbf97000-7f5ecc000000 ---p 00000000 00:00 0 
+7f5ecc000000-7f5ecff45000 rw-p 00000000 00:00 0 
+7f5ecff45000-7f5ed0000000 ---p 00000000 00:00 0 
+7f5ed0000000-7f5ed3d11000 rw-p 00000000 00:00 0 
+7f5ed3d11000-7f5ed4000000 ---p 00000000 00:00 0 
+7f5ed4000000-7f5ed7fcf000 rw-p 00000000 00:00 0 
+7f5ed7fcf000-7f5ed8000000 ---p 00000000 00:00 0 
+7f5ed8000000-7f5edbfc9000 rw-p 00000000 00:00 0 
+7f5edbfc9000-7f5edc000000 ---p 00000000 00:00 0 
+7f5edc000000-7f5edffa9000 rw-p 00000000 00:00 0 
+7f5edffa9000-7f5ee0000000 ---p 00000000 00:00 0 
+7f5ee0000000-7f5ee3fa3000 rw-p 00000000 00:00 0 
+7f5ee3fa3000-7f5ee4000000 ---p 00000000 00:00 0 
+7f5ee4188000-7f5ee45e1000 r-xp 00000000 08:01 8005151                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmumps.so
+7f5ee45e1000-7f5ee47e1000 ---p 00459000 08:01 8005151                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmumps.so
+7f5ee47e1000-7f5ee47f2000 rw-p 00459000 08:01 8005151                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmumps.so
+7f5ee47f2000-7f5ee47f5000 rw-p 00000000 00:00 0 
+7f5ee47f6000-7f5ee57f6000 rw-p 00000000 00:00 0 
+7f5ee57f6000-7f5ee57f9000 ---p 00000000 00:00 0 
+7f5ee57f9000-7f5ee5bf7000 rwxp 00000000 00:00 0                          [stack:12152]
+7f5ee5bf7000-7f5ee5bfa000 ---p 00000000 00:00 0 
+7f5ee5bfa000-7f5ee5ff8000 rwxp 00000000 00:00 0                          [stack:12151]
+7f5ee5ff8000-7f5ee5ffb000 ---p 00000000 00:00 0 
+7f5ee5ffb000-7f5ee63f9000 rwxp 00000000 00:00 0                          [stack:12150]
+7f5ee63f9000-7f5ee63fc000 ---p 00000000 00:00 0 
+7f5ee63fc000-7f5ee67fa000 rwxp 00000000 00:00 0                          [stack:12149]
+7f5ee67fa000-7f5ee67fd000 ---p 00000000 00:00 0 
+7f5ee67fd000-7f5ee6bfb000 rwxp 00000000 00:00 0                          [stack:12148]
+7f5ee6bfb000-7f5ee6bfe000 ---p 00000000 00:00 0 
+7f5ee6bfe000-7f5ee6ffc000 rwxp 00000000 00:00 0                          [stack:12147]
+7f5ee6ffc000-7f5ee6fff000 ---p 00000000 00:00 0 
+7f5ee6fff000-7f5ee73fd000 rwxp 00000000 00:00 0                          [stack:12146]
+7f5ee73fd000-7f5ee7400000 ---p 00000000 00:00 0 
+7f5ee7400000-7f5ee77fe000 rwxp 00000000 00:00 0                          [stack:12145]
+7f5ee77fe000-7f5ee7801000 ---p 00000000 00:00 0 
+7f5ee7801000-7f5ee7bff000 rwxp 00000000 00:00 0                          [stack:12144]
+7f5ee7bff000-7f5ee7c02000 ---p 00000000 00:00 0 
+7f5ee7c02000-7f5ee8000000 rwxp 00000000 00:00 0                          [stack:12143]
+7f5ee8000000-7f5ee9971000 rw-p 00000000 00:00 0 
+7f5ee9971000-7f5eec000000 ---p 00000000 00:00 0 
+7f5eec000000-7f5eec021000 rw-p 00000000 00:00 0 
+7f5eec021000-7f5ef0000000 ---p 00000000 00:00 0 
+7f5ef0000000-7f5ef0021000 rw-p 00000000 00:00 0 
+7f5ef0021000-7f5ef4000000 ---p 00000000 00:00 0 
+7f5ef4000000-7f5ef4021000 rw-p 00000000 00:00 0 
+7f5ef4021000-7f5ef8000000 ---p 00000000 00:00 0 
+7f5ef8000000-7f5ef8021000 rw-p 00000000 00:00 0 
+7f5ef8021000-7f5efc000000 ---p 00000000 00:00 0 
+7f5efc000000-7f5efc021000 rw-p 00000000 00:00 0 
+7f5efc021000-7f5f00000000 ---p 00000000 00:00 0 
+7f5f00000000-7f5f00021000 rw-p 00000000 00:00 0 
+7f5f00021000-7f5f04000000 ---p 00000000 00:00 0 
+7f5f04000000-7f5f04021000 rw-p 00000000 00:00 0 
+7f5f04021000-7f5f08000000 ---p 00000000 00:00 0 
+7f5f08000000-7f5f08021000 rw-p 00000000 00:00 0 
+7f5f08021000-7f5f0c000000 ---p 00000000 00:00 0 
+7f5f0c0a6000-7f5f0c0a9000 ---p 00000000 00:00 0 
+7f5f0c0a9000-7f5f0c4a7000 rwxp 00000000 00:00 0                          [stack:12142]
+7f5f0c4a7000-7f5f0c4aa000 ---p 00000000 00:00 0 
+7f5f0c4aa000-7f5f0c8a8000 rwxp 00000000 00:00 0                          [stack:12141]
+7f5f0c8a8000-7f5f0c8ab000 ---p 00000000 00:00 0 
+7f5f0c8ab000-7f5f0cca9000 rwxp 00000000 00:00 0                          [stack:12140]
+7f5f0cca9000-7f5f0ccac000 ---p 00000000 00:00 0 
+7f5f0ccac000-7f5f0d0aa000 rwxp 00000000 00:00 0                          [stack:12139]
+7f5f0d0aa000-7f5f0d0ad000 ---p 00000000 00:00 0 
+7f5f0d0ad000-7f5f0d4ab000 rwxp 00000000 00:00 0                          [stack:12138]
+7f5f0d4ab000-7f5f0d4ae000 ---p 00000000 00:00 0 
+7f5f0d4ae000-7f5f0d8ac000 rwxp 00000000 00:00 0                          [stack:12137]
+7f5f0d8ac000-7f5f0d8af000 ---p 00000000 00:00 0 
+7f5f0d8af000-7f5f0dcad000 rwxp 00000000 00:00 0 
+7f5f0dcad000-7f5f0dcae000 ---p 00000000 00:00 0 
+7f5f0dcae000-7f5f0e4ae000 rwxp 00000000 00:00 0                          [stack:12126]
+7f5f0e4ae000-7f5f0e4af000 ---p 00000000 00:00 0 
+7f5f0e4af000-7f5f0ecaf000 rwxp 00000000 00:00 0                          [stack:12125]
+7f5f0f7fe000-7f5f0f7ff000 ---p 00000000 00:00 0 
+7f5f0f7ff000-7f5f0fbff000 rwxp 00000000 00:00 0                          [stack:12109]
+7f5f0fbff000-7f5f0fc00000 ---p 00000000 00:00 0 
+7f5f0fc00000-7f5f10000000 rwxp 00000000 00:00 0                          [stack:12108]
+7f5f10000000-7f5f10021000 rw-p 00000000 00:00 0 
+7f5f10021000-7f5f14000000 ---p 00000000 00:00 0 
+7f5f14000000-7f5f14021000 rw-p 00000000 00:00 0 
+7f5f14021000-7f5f18000000 ---p 00000000 00:00 0 
+7f5f18000000-7f5f18021000 rw-p 00000000 00:00 0 
+7f5f18021000-7f5f1c000000 ---p 00000000 00:00 0 
+7f5f1c000000-7f5f1c021000 rw-p 00000000 00:00 0 
+7f5f1c021000-7f5f20000000 ---p 00000000 00:00 0 
+7f5f20000000-7f5f20021000 rw-p 00000000 00:00 0 
+7f5f20021000-7f5f24000000 ---p 00000000 00:00 0 
+7f5f24000000-7f5f24021000 rw-p 00000000 00:00 0 
+7f5f24021000-7f5f28000000 ---p 00000000 00:00 0 
+7f5f28000000-7f5f28021000 rw-p 00000000 00:00 0 
+7f5f28021000-7f5f2c000000 ---p 00000000 00:00 0 
+7f5f2c000000-7f5f2c021000 rw-p 00000000 00:00 0 
+7f5f2c021000-7f5f30000000 ---p 00000000 00:00 0 
+7f5f30000000-7f5f30021000 rw-p 00000000 00:00 0 
+7f5f30021000-7f5f34000000 ---p 00000000 00:00 0 
+7f5f34000000-7f5f34021000 rw-p 00000000 00:00 0 
+7f5f34021000-7f5f38000000 ---p 00000000 00:00 0 
+7f5f38000000-7f5f3bff8000 rw-p 00000000 00:00 0 
+7f5f3bff8000-7f5f3c000000 ---p 00000000 00:00 0 
+7f5f3c3f1000-7f5f3c3f2000 ---p 00000000 00:00 0 
+7f5f3c3f2000-7f5f3c7f2000 rwxp 00000000 00:00 0                          [stack:12107]
+7f5f3c7f2000-7f5f3c7f3000 ---p 00000000 00:00 0 
+7f5f3c7f3000-7f5f3cbf3000 rwxp 00000000 00:00 0                          [stack:12106]
+7f5f3cbf3000-7f5f3cbf4000 ---p 00000000 00:00 0 
+7f5f3cbf4000-7f5f3cff4000 rwxp 00000000 00:00 0                          [stack:12105]
+7f5f3cff4000-7f5f3cff5000 ---p 00000000 00:00 0 
+7f5f3cff5000-7f5f3d3f5000 rwxp 00000000 00:00 0                          [stack:12104]
+7f5f3d3f5000-7f5f3d3f6000 ---p 00000000 00:00 0 
+7f5f3d3f6000-7f5f3d7f6000 rwxp 00000000 00:00 0                          [stack:12103]
+7f5f3d7f6000-7f5f3d7f7000 ---p 00000000 00:00 0 
+7f5f3d7f7000-7f5f3dbf7000 rwxp 00000000 00:00 0                          [stack:12102]
+7f5f3dbf7000-7f5f3dbf8000 ---p 00000000 00:00 0 
+7f5f3dbf8000-7f5f3dff8000 rwxp 00000000 00:00 0                          [stack:12101]
+7f5f3dff8000-7f5f3dff9000 ---p 00000000 00:00 0 
+7f5f3dff9000-7f5f3e3f9000 rwxp 00000000 00:00 0                          [stack:12100]
+7f5f3e3f9000-7f5f3e3fa000 ---p 00000000 00:00 0 
+7f5f3e3fa000-7f5f3e7fa000 rwxp 00000000 00:00 0                          [stack:12099]
+7f5f3e7fa000-7f5f3e7fb000 ---p 00000000 00:00 0 
+7f5f3e7fb000-7f5f3ebfb000 rwxp 00000000 00:00 0                          [stack:12098]
+7f5f3ebfb000-7f5f3ebfc000 ---p 00000000 00:00 0 
+7f5f3ebfc000-7f5f3effc000 rwxp 00000000 00:00 0                          [stack:12097]
+7f5f3effc000-7f5f3effd000 ---p 00000000 00:00 0 
+7f5f3effd000-7f5f3f3fd000 rwxp 00000000 00:00 0                          [stack:12096]
+7f5f3f3fd000-7f5f3f3fe000 ---p 00000000 00:00 0 
+7f5f3f3fe000-7f5f3f7fe000 rwxp 00000000 00:00 0                          [stack:12095]
+7f5f3f7fe000-7f5f3f801000 ---p 00000000 00:00 0 
+7f5f3f801000-7f5f3fbff000 rwxp 00000000 00:00 0                          [stack:12135]
+7f5f3fbff000-7f5f3fc02000 ---p 00000000 00:00 0 
+7f5f3fc02000-7f5f40000000 rwxp 00000000 00:00 0                          [stack:12083]
+7f5f40000000-7f5f40021000 rw-p 00000000 00:00 0 
+7f5f40021000-7f5f44000000 ---p 00000000 00:00 0 
+7f5f44000000-7f5f44021000 rw-p 00000000 00:00 0 
+7f5f44021000-7f5f48000000 ---p 00000000 00:00 0 
+7f5f48000000-7f5f48021000 rw-p 00000000 00:00 0 
+7f5f48021000-7f5f4c000000 ---p 00000000 00:00 0 
+7f5f4c000000-7f5f4c021000 rw-p 00000000 00:00 0 
+7f5f4c021000-7f5f50000000 ---p 00000000 00:00 0 
+7f5f50000000-7f5f50021000 rw-p 00000000 00:00 0 
+7f5f50021000-7f5f54000000 ---p 00000000 00:00 0 
+7f5f54205000-7f5f5421e000 r--s 000fd000 08:01 7868441                    /usr/local/comsol50/multiphysics/plugins/de.schlichtherle.truezip-7_1.0.0.jar
+7f5f54224000-7f5f5422e000 r--s 000ac000 08:01 7868495                    /usr/local/comsol50/multiphysics/plugins/com.comsol.applapi_1.0.0.jar
+7f5f54231000-7f5f54241000 r--s 00101000 08:01 7868512                    /usr/local/comsol50/multiphysics/plugins/com.comsol.multiphysics_1.0.0.jar
+7f5f54242000-7f5f54245000 ---p 00000000 00:00 0 
+7f5f54245000-7f5f54643000 rwxp 00000000 00:00 0                          [stack:12010]
+7f5f54643000-7f5f54646000 ---p 00000000 00:00 0 
+7f5f54646000-7f5f54a44000 rwxp 00000000 00:00 0                          [stack:12009]
+7f5f54a44000-7f5f54a47000 ---p 00000000 00:00 0 
+7f5f54a47000-7f5f54e45000 rwxp 00000000 00:00 0                          [stack:12008]
+7f5f54e45000-7f5f54e48000 ---p 00000000 00:00 0 
+7f5f54e48000-7f5f55246000 rwxp 00000000 00:00 0                          [stack:12007]
+7f5f55246000-7f5f55249000 ---p 00000000 00:00 0 
+7f5f55249000-7f5f55647000 rwxp 00000000 00:00 0                          [stack:12006]
+7f5f55647000-7f5f55648000 ---p 00000000 00:00 0 
+7f5f55648000-7f5f55e48000 rwxp 00000000 00:00 0 
+7f5f55e48000-7f5f55e85000 r-xp 00000000 08:01 19399371                   /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f5f55e85000-7f5f56084000 ---p 0003d000 08:01 19399371                   /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f5f56084000-7f5f56085000 r--p 0003c000 08:01 19399371                   /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f5f56085000-7f5f56086000 rw-p 0003d000 08:01 19399371                   /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f5f56088000-7f5f5608f000 r-xp 00000000 08:01 4980927                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f5f5608f000-7f5f5628e000 ---p 00007000 08:01 4980927                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f5f5628e000-7f5f5628f000 r--p 00006000 08:01 4980927                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f5f5628f000-7f5f56290000 rw-p 00007000 08:01 4980927                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f5f56290000-7f5f562b0000 r-xp 00000000 08:01 19399375                   /lib/x86_64-linux-gnu/libselinux.so.1
+7f5f562b0000-7f5f564af000 ---p 00020000 08:01 19399375                   /lib/x86_64-linux-gnu/libselinux.so.1
+7f5f564af000-7f5f564b0000 r--p 0001f000 08:01 19399375                   /lib/x86_64-linux-gnu/libselinux.so.1
+7f5f564b0000-7f5f564b1000 rw-p 00020000 08:01 19399375                   /lib/x86_64-linux-gnu/libselinux.so.1
+7f5f564b1000-7f5f564b3000 rw-p 00000000 00:00 0 
+7f5f564b8000-7f5f564bb000 r-xp 00000000 08:01 4981192                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f5f564bb000-7f5f566ba000 ---p 00003000 08:01 4981192                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f5f566ba000-7f5f566bb000 r--p 00002000 08:01 4981192                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f5f566bb000-7f5f566bc000 rw-p 00003000 08:01 4981192                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f5f566c0000-7f5f567c6000 r-xp 00000000 08:01 19399456                   /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f5f567c6000-7f5f569c5000 ---p 00106000 08:01 19399456                   /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f5f569c5000-7f5f569c6000 r--p 00105000 08:01 19399456                   /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f5f569c6000-7f5f569c7000 rw-p 00106000 08:01 19399456                   /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f5f569c7000-7f5f569c8000 rw-p 00000000 00:00 0 
+7f5f569c8000-7f5f56a17000 r-xp 00000000 08:01 4981325                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f5f56a17000-7f5f56c17000 ---p 0004f000 08:01 4981325                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f5f56c17000-7f5f56c18000 r--p 0004f000 08:01 4981325                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f5f56c18000-7f5f56c19000 rw-p 00050000 08:01 4981325                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f5f56c20000-7f5f56d8c000 r-xp 00000000 08:01 4981544                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f5f56d8c000-7f5f56f8b000 ---p 0016c000 08:01 4981544                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f5f56f8b000-7f5f56f8f000 r--p 0016b000 08:01 4981544                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f5f56f8f000-7f5f56f91000 rw-p 0016f000 08:01 4981544                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f5f56f91000-7f5f56f93000 rw-p 00000000 00:00 0 
+7f5f56f98000-7f5f56fdc000 r-xp 00000000 08:01 19398745                   /lib/x86_64-linux-gnu/libdbus-1.so.3.7.6
+7f5f56fdc000-7f5f571db000 ---p 00044000 08:01 19398745                   /lib/x86_64-linux-gnu/libdbus-1.so.3.7.6
+7f5f571db000-7f5f571dc000 r--p 00043000 08:01 19398745                   /lib/x86_64-linux-gnu/libdbus-1.so.3.7.6
+7f5f571dc000-7f5f571dd000 rw-p 00044000 08:01 19398745                   /lib/x86_64-linux-gnu/libdbus-1.so.3.7.6
+7f5f571e0000-7f5f57205000 r-xp 00000000 08:01 4983471                    /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f5f57205000-7f5f57405000 ---p 00025000 08:01 4983471                    /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f5f57405000-7f5f57406000 r--p 00025000 08:01 4983471                    /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f5f57406000-7f5f57407000 rw-p 00026000 08:01 4983471                    /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f5f57408000-7f5f5740a000 r-xp 00000000 08:01 19398704                   /lib/x86_64-linux-gnu/libnss_mdns4.so.2
+7f5f5740a000-7f5f5760a000 ---p 00002000 08:01 19398704                   /lib/x86_64-linux-gnu/libnss_mdns4.so.2
+7f5f5760a000-7f5f5760b000 r--p 00002000 08:01 19398704                   /lib/x86_64-linux-gnu/libnss_mdns4.so.2
+7f5f5760b000-7f5f5760c000 rw-p 00003000 08:01 19398704                   /lib/x86_64-linux-gnu/libnss_mdns4.so.2
+7f5f57610000-7f5f57627000 r-xp 00000000 08:01 19399369                   /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f5f57627000-7f5f57827000 ---p 00017000 08:01 19399369                   /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f5f57827000-7f5f57828000 r--p 00017000 08:01 19399369                   /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f5f57828000-7f5f57829000 rw-p 00018000 08:01 19399369                   /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f5f57829000-7f5f5782b000 rw-p 00000000 00:00 0 
+7f5f57830000-7f5f57835000 r-xp 00000000 08:01 19403038                   /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f5f57835000-7f5f57a34000 ---p 00005000 08:01 19403038                   /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f5f57a34000-7f5f57a35000 r--p 00004000 08:01 19403038                   /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f5f57a35000-7f5f57a36000 rw-p 00005000 08:01 19403038                   /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f5f57a38000-7f5f57a3a000 r-xp 00000000 08:01 19402346                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f5f57a3a000-7f5f57c39000 ---p 00002000 08:01 19402346                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f5f57c39000-7f5f57c3a000 r--p 00001000 08:01 19402346                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f5f57c3a000-7f5f57c3b000 rw-p 00002000 08:01 19402346                   /lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
+7f5f57c40000-7f5f57f09000 r-xp 00000000 08:01 8005171                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgraphics_scene_common.so
+7f5f57f09000-7f5f58108000 ---p 002c9000 08:01 8005171                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgraphics_scene_common.so
+7f5f58108000-7f5f58129000 rw-p 002c8000 08:01 8005171                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgraphics_scene_common.so
+7f5f58129000-7f5f5812a000 rw-p 00000000 00:00 0 
+7f5f58130000-7f5f58243000 r-xp 00000000 08:01 8005167                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgraphics_common.so
+7f5f58243000-7f5f58442000 ---p 00113000 08:01 8005167                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgraphics_common.so
+7f5f58442000-7f5f58446000 rw-p 00112000 08:01 8005167                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgraphics_common.so
+7f5f58446000-7f5f58447000 rw-p 00000000 00:00 0 
+7f5f58448000-7f5f5855d000 r-xp 00000000 08:01 8005145                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcstextrenderer.so
+7f5f5855d000-7f5f5875c000 ---p 00115000 08:01 8005145                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcstextrenderer.so
+7f5f5875c000-7f5f5876a000 rw-p 00114000 08:01 8005145                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcstextrenderer.so
+7f5f58770000-7f5f5877b000 r-xp 00000000 08:01 8005102                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsjnitextrenderer.so
+7f5f5877b000-7f5f5897a000 ---p 0000b000 08:01 8005102                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsjnitextrenderer.so
+7f5f5897a000-7f5f5897b000 rw-p 0000a000 08:01 8005102                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsjnitextrenderer.so
+7f5f58980000-7f5f5898a000 r-xp 00000000 08:01 8004985                    /usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/libltdl.so.7.3.0
+7f5f5898a000-7f5f58b89000 ---p 0000a000 08:01 8004985                    /usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/libltdl.so.7.3.0
+7f5f58b89000-7f5f58b8a000 rw-p 00009000 08:01 8004985                    /usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/libltdl.so.7.3.0
+7f5f58b90000-7f5f58ba8000 r-xp 00000000 08:01 19399466                   /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5f58ba8000-7f5f58da7000 ---p 00018000 08:01 19399466                   /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5f58da7000-7f5f58da8000 r--p 00017000 08:01 19399466                   /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5f58da8000-7f5f58da9000 rw-p 00018000 08:01 19399466                   /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5f58db0000-7f5f58f0e000 r-xp 00000000 08:01 8004957                    /usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/libGraphicsMagick.so.3.10.0
+7f5f58f0e000-7f5f5910e000 ---p 0015e000 08:01 8004957                    /usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/libGraphicsMagick.so.3.10.0
+7f5f5910e000-7f5f5911b000 rw-p 0015e000 08:01 8004957                    /usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/libGraphicsMagick.so.3.10.0
+7f5f59120000-7f5f59320000 rw-p 00000000 00:00 0 
+7f5f59320000-7f5f5b3a4000 r-xp 00000000 08:01 8005157                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmklblas.so
+7f5f5b3a4000-7f5f5b5a3000 ---p 02084000 08:01 8005157                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmklblas.so
+7f5f5b5a3000-7f5f5b5c5000 rw-p 02083000 08:01 8005157                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmklblas.so
+7f5f5b5c5000-7f5f5b5d4000 rw-p 00000000 00:00 0 
+7f5f5b5d8000-7f5f5b682000 r-xp 00000000 08:01 8005098                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsfftw3.so.3.1.2
+7f5f5b682000-7f5f5b881000 ---p 000aa000 08:01 8005098                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsfftw3.so.3.1.2
+7f5f5b881000-7f5f5b888000 rw-p 000a9000 08:01 8005098                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsfftw3.so.3.1.2
+7f5f5b888000-7f5f5b8d3000 r-xp 00000000 08:01 8005079                    /usr/local/comsol50/multiphysics/lib/glnxa64/libintlc.so.5
+7f5f5b8d3000-7f5f5bad2000 ---p 0004b000 08:01 8005079                    /usr/local/comsol50/multiphysics/lib/glnxa64/libintlc.so.5
+7f5f5bad2000-7f5f5bad5000 rw-p 0004a000 08:01 8005079                    /usr/local/comsol50/multiphysics/lib/glnxa64/libintlc.so.5
+7f5f5bad5000-7f5f5bad6000 rw-p 00000000 00:00 0 
+7f5f5bad8000-7f5f5bbba000 r-xp 00000000 08:01 8005086                    /usr/local/comsol50/multiphysics/lib/glnxa64/libiomp5.so
+7f5f5bbba000-7f5f5bdb9000 ---p 000e2000 08:01 8005086                    /usr/local/comsol50/multiphysics/lib/glnxa64/libiomp5.so
+7f5f5bdb9000-7f5f5bdc4000 rw-p 000e1000 08:01 8005086                    /usr/local/comsol50/multiphysics/lib/glnxa64/libiomp5.so
+7f5f5bdc4000-7f5f5bdeb000 rw-p 00000000 00:00 0 
+7f5f5bdf0000-7f5f5bdf5000 r-xp 00000000 08:01 8005123                    /usr/local/comsol50/multiphysics/lib/glnxa64/libirng.so
+7f5f5bdf5000-7f5f5bff5000 ---p 00005000 08:01 8005123                    /usr/local/comsol50/multiphysics/lib/glnxa64/libirng.so
+7f5f5bff5000-7f5f5bff7000 rw-p 00005000 08:01 8005123                    /usr/local/comsol50/multiphysics/lib/glnxa64/libirng.so
+7f5f5bff8000-7f5f5c79e000 r-xp 00000000 08:01 8005162                    /usr/local/comsol50/multiphysics/lib/glnxa64/libsvml.so
+7f5f5c79e000-7f5f5c99d000 ---p 007a6000 08:01 8005162                    /usr/local/comsol50/multiphysics/lib/glnxa64/libsvml.so
+7f5f5c99d000-7f5f5c9c2000 rw-p 007a5000 08:01 8005162                    /usr/local/comsol50/multiphysics/lib/glnxa64/libsvml.so
+7f5f5c9c8000-7f5f5cc42000 r-xp 00000000 08:01 8005133                    /usr/local/comsol50/multiphysics/lib/glnxa64/libimf.so
+7f5f5cc42000-7f5f5ce41000 ---p 0027a000 08:01 8005133                    /usr/local/comsol50/multiphysics/lib/glnxa64/libimf.so
+7f5f5ce41000-7f5f5ce84000 rw-p 00279000 08:01 8005133                    /usr/local/comsol50/multiphysics/lib/glnxa64/libimf.so
+7f5f5ce88000-7f5f5ce99000 r-xp 00000000 08:01 8005096                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmpi.so
+7f5f5ce99000-7f5f5d098000 ---p 00011000 08:01 8005096                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmpi.so
+7f5f5d098000-7f5f5d099000 rw-p 00010000 08:01 8005096                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmpi.so
+7f5f5d0a0000-7f5f5d1c2000 r-xp 00000000 08:01 8005156                    /usr/local/comsol50/multiphysics/lib/glnxa64/libifcoremt.so.5
+7f5f5d1c2000-7f5f5d3c2000 ---p 00122000 08:01 8005156                    /usr/local/comsol50/multiphysics/lib/glnxa64/libifcoremt.so.5
+7f5f5d3c2000-7f5f5d3d4000 rw-p 00122000 08:01 8005156                    /usr/local/comsol50/multiphysics/lib/glnxa64/libifcoremt.so.5
+7f5f5d3d4000-7f5f5d405000 rw-p 00000000 00:00 0 
+7f5f5d408000-7f5f5d42f000 r-xp 00000000 08:01 8005089                    /usr/local/comsol50/multiphysics/lib/glnxa64/libifport.so.5
+7f5f5d42f000-7f5f5d62e000 ---p 00027000 08:01 8005089                    /usr/local/comsol50/multiphysics/lib/glnxa64/libifport.so.5
+7f5f5d62e000-7f5f5d631000 rw-p 00026000 08:01 8005089                    /usr/local/comsol50/multiphysics/lib/glnxa64/libifport.so.5
+7f5f5d631000-7f5f5d637000 rw-p 00000000 00:00 0 
+7f5f5d638000-7f5f5d65c000 r-xp 00000000 08:01 8005093                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsblas.so
+7f5f5d65c000-7f5f5d85b000 ---p 00024000 08:01 8005093                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsblas.so
+7f5f5d85b000-7f5f5d85c000 rw-p 00023000 08:01 8005093                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsblas.so
+7f5f5d860000-7f5f5d8a1000 r-xp 00000000 08:01 8005142                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsspecfun.so
+7f5f5d8a1000-7f5f5daa1000 ---p 00041000 08:01 8005142                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsspecfun.so
+7f5f5daa1000-7f5f5daa4000 rw-p 00041000 08:01 8005142                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsspecfun.so
+7f5f5daa8000-7f5f5daac000 r-xp 00000000 08:01 8005046                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscutil.so
+7f5f5daac000-7f5f5dcac000 ---p 00004000 08:01 8005046                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscutil.so
+7f5f5dcac000-7f5f5dcae000 rw-p 00004000 08:01 8005046                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscutil.so
+7f5f5dcae000-7f5f5dd14000 rw-p 00000000 00:00 0 
+7f5f5dd18000-7f5f5de21000 r-xp 00000000 08:01 8005076                    /usr/local/comsol50/multiphysics/lib/glnxa64/ipv4/libcsnutil.so
+7f5f5de21000-7f5f5e020000 ---p 00109000 08:01 8005076                    /usr/local/comsol50/multiphysics/lib/glnxa64/ipv4/libcsnutil.so
+7f5f5e020000-7f5f5e02c000 rw-p 00108000 08:01 8005076                    /usr/local/comsol50/multiphysics/lib/glnxa64/ipv4/libcsnutil.so
+7f5f5e02c000-7f5f5e04b000 rw-p 00000000 00:00 0 
+7f5f5e050000-7f5f5e086000 r-xp 00000000 08:01 8005080                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssundials.so
+7f5f5e086000-7f5f5e285000 ---p 00036000 08:01 8005080                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssundials.so
+7f5f5e285000-7f5f5e286000 rw-p 00035000 08:01 8005080                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssundials.so
+7f5f5e288000-7f5f5e3c2000 r-xp 00000000 08:01 8005154                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsspooles.so
+7f5f5e3c2000-7f5f5e5c1000 ---p 0013a000 08:01 8005154                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsspooles.so
+7f5f5e5c1000-7f5f5e5c5000 rw-p 00139000 08:01 8005154                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsspooles.so
+7f5f5e5c8000-7f5f5e5ef000 r-xp 00000000 08:01 8005132                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsarpack.so
+7f5f5e5ef000-7f5f5e7ef000 ---p 00027000 08:01 8005132                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsarpack.so
+7f5f5e7ef000-7f5f5e7f3000 rw-p 00027000 08:01 8005132                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsarpack.so
+7f5f5e7f8000-7f5f5e9b5000 r-xp 00000000 08:01 8005153                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsutil.so
+7f5f5e9b5000-7f5f5ebb4000 ---p 001bd000 08:01 8005153                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsutil.so
+7f5f5ebb4000-7f5f5ebbd000 rw-p 001bc000 08:01 8005153                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsutil.so
+7f5f5ebc0000-7f5f5ebde000 r-xp 00000000 08:01 8005136                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscluster.so
+7f5f5ebde000-7f5f5edde000 ---p 0001e000 08:01 8005136                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscluster.so
+7f5f5edde000-7f5f5eddf000 rw-p 0001e000 08:01 8005136                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscluster.so
+7f5f5ede0000-7f5f5f352000 r-xp 00000000 08:01 8005150                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsarray.so
+7f5f5f352000-7f5f5f551000 ---p 00572000 08:01 8005150                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsarray.so
+7f5f5f551000-7f5f5f598000 rw-p 00571000 08:01 8005150                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsarray.so
+7f5f5f598000-7f5f5f599000 rw-p 00000000 00:00 0 
+7f5f5f5a0000-7f5f5f68c000 r-xp 00000000 08:01 8005134                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsclusterarray.so
+7f5f5f68c000-7f5f5f88b000 ---p 000ec000 08:01 8005134                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsclusterarray.so
+7f5f5f88b000-7f5f5f890000 rw-p 000eb000 08:01 8005134                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsclusterarray.so
+7f5f5f890000-7f5f5fc88000 r-xp 00000000 08:01 8005081                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgeom.so
+7f5f5fc88000-7f5f5fe88000 ---p 003f8000 08:01 8005081                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgeom.so
+7f5f5fe88000-7f5f5fe97000 rw-p 003f8000 08:01 8005081                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsgeom.so
+7f5f5fe98000-7f5f5ff59000 r-xp 00000000 08:01 8005169                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsdatacarrier.so
+7f5f5ff59000-7f5f60158000 ---p 000c1000 08:01 8005169                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsdatacarrier.so
+7f5f60158000-7f5f6015d000 rw-p 000c0000 08:01 8005169                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsdatacarrier.so
+7f5f60160000-7f5f606d6000 r-xp 00000000 08:01 8005040                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscomsolgeom.so
+7f5f606d6000-7f5f608d5000 ---p 00576000 08:01 8005040                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscomsolgeom.so
+7f5f608d5000-7f5f608e2000 rw-p 00575000 08:01 8005040                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcscomsolgeom.so
+7f5f608e8000-7f5f611b6000 r-xp 00000000 08:01 8005138                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmesh.so
+7f5f611b6000-7f5f613b5000 ---p 008ce000 08:01 8005138                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmesh.so
+7f5f613b5000-7f5f613d0000 rw-p 008cd000 08:01 8005138                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsmesh.so
+7f5f613d0000-7f5f62be5000 r-xp 00000000 08:01 8005118                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsxmesh.so
+7f5f62be5000-7f5f62de4000 ---p 01815000 08:01 8005118                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsxmesh.so
+7f5f62de4000-7f5f62e56000 rw-p 01814000 08:01 8005118                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsxmesh.so
+7f5f62e56000-7f5f62e57000 rw-p 00000000 00:00 0 
+7f5f62e58000-7f5f634e1000 r-xp 00000000 08:01 8005149                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssolver.so
+7f5f634e1000-7f5f636e1000 ---p 00689000 08:01 8005149                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssolver.so
+7f5f636e1000-7f5f63705000 rw-p 00689000 08:01 8005149                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssolver.so
+7f5f63708000-7f5f63744000 r-xp 00000000 08:01 8005085                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcspost.so
+7f5f63744000-7f5f63943000 ---p 0003c000 08:01 8005085                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcspost.so
+7f5f63943000-7f5f63945000 rw-p 0003b000 08:01 8005085                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcspost.so
+7f5f63948000-7f5f63be0000 r-xp 00000000 08:01 8005101                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsjni.so
+7f5f63be0000-7f5f63de0000 ---p 00298000 08:01 8005101                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsjni.so
+7f5f63de0000-7f5f63de8000 rw-p 00298000 08:01 8005101                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsjni.so
+7f5f63de8000-7f5f63dfe000 r-xp 00000000 08:01 19399468                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f63dfe000-7f5f63ffd000 ---p 00016000 08:01 19399468                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f63ffd000-7f5f63ffe000 rw-p 00015000 08:01 19399468                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f64000000-7f5f64033000 rw-p 00000000 00:00 0 
+7f5f64033000-7f5f68000000 ---p 00000000 00:00 0 
+7f5f68000000-7f5f68021000 rw-p 00000000 00:00 0 
+7f5f68021000-7f5f6c000000 ---p 00000000 00:00 0 
+7f5f6c000000-7f5f6c048000 rw-p 00000000 00:00 0 
+7f5f6c048000-7f5f70000000 ---p 00000000 00:00 0 
+7f5f70000000-7f5f70043000 rw-p 00000000 00:00 0 
+7f5f70043000-7f5f74000000 ---p 00000000 00:00 0 
+7f5f74000000-7f5f74021000 rw-p 00000000 00:00 0 
+7f5f74021000-7f5f78000000 ---p 00000000 00:00 0 
+7f5f78000000-7f5f784a0000 rw-p 00000000 00:00 0 
+7f5f784a0000-7f5f7c000000 ---p 00000000 00:00 0 
+7f5f7c000000-7f5f7c021000 rw-p 00000000 00:00 0 
+7f5f7c021000-7f5f80000000 ---p 00000000 00:00 0 
+7f5f80000000-7f5f800ae000 rw-p 00000000 00:00 0 
+7f5f800ae000-7f5f84000000 ---p 00000000 00:00 0 
+7f5f84000000-7f5f846a8000 rw-p 00000000 00:00 0 
+7f5f846a8000-7f5f88000000 ---p 00000000 00:00 0 
+7f5f88000000-7f5f88021000 rw-p 00000000 00:00 0 
+7f5f88021000-7f5f8c000000 ---p 00000000 00:00 0 
+7f5f8c000000-7f5f8c021000 rw-p 00000000 00:00 0 
+7f5f8c021000-7f5f90000000 ---p 00000000 00:00 0 
+7f5f90000000-7f5f93f94000 rw-p 00000000 00:00 0 
+7f5f93f94000-7f5f94000000 ---p 00000000 00:00 0 
+7f5f94000000-7f5f94021000 rw-p 00000000 00:00 0 
+7f5f94021000-7f5f98000000 ---p 00000000 00:00 0 
+7f5f98000000-7f5f98021000 rw-p 00000000 00:00 0 
+7f5f98021000-7f5f9c000000 ---p 00000000 00:00 0 
+7f5f9c000000-7f5f9dab1000 rw-p 00000000 00:00 0 
+7f5f9dab1000-7f5fa0000000 ---p 00000000 00:00 0 
+7f5fa0000000-7f5fa24ab000 rw-p 00000000 00:00 0 
+7f5fa24ab000-7f5fa4000000 ---p 00000000 00:00 0 
+7f5fa4000000-7f5fa4021000 rw-p 00000000 00:00 0 
+7f5fa4021000-7f5fa8000000 ---p 00000000 00:00 0 
+7f5fa8000000-7f5fa8021000 rw-p 00000000 00:00 0 
+7f5fa8021000-7f5fac000000 ---p 00000000 00:00 0 
+7f5fac000000-7f5fac0da000 rw-p 00000000 00:00 0 
+7f5fac0da000-7f5fb0000000 ---p 00000000 00:00 0 
+7f5fb0000000-7f5fb0021000 rw-p 00000000 00:00 0 
+7f5fb0021000-7f5fb4000000 ---p 00000000 00:00 0 
+7f5fb4000000-7f5fb4035000 rw-p 00000000 00:00 0 
+7f5fb4035000-7f5fb8000000 ---p 00000000 00:00 0 
+7f5fb8002000-7f5fb800a000 r--s 00232000 08:01 7868553                    /usr/local/comsol50/multiphysics/plugins/com.comsol.sme_1.0.0.jar
+7f5fb8010000-7f5fb8015000 r-xp 00000000 08:01 8005115                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsscalapack.so
+7f5fb8015000-7f5fb8214000 ---p 00005000 08:01 8005115                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsscalapack.so
+7f5fb8214000-7f5fb8215000 rw-p 00004000 08:01 8005115                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsscalapack.so
+7f5fb8218000-7f5fb82fe000 r-xp 00000000 08:01 4985066                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f5fb82fe000-7f5fb84fd000 ---p 000e6000 08:01 4985066                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f5fb84fd000-7f5fb8505000 r--p 000e5000 08:01 4985066                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f5fb8505000-7f5fb8507000 rw-p 000ed000 08:01 4985066                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f5fb8507000-7f5fb851c000 rw-p 00000000 00:00 0 
+7f5fb8520000-7f5fb8521000 r-xp 00000000 08:01 8005124                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsdynload.so
+7f5fb8521000-7f5fb8720000 ---p 00001000 08:01 8005124                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsdynload.so
+7f5fb8720000-7f5fb8721000 rw-p 00000000 08:01 8005124                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcsdynload.so
+7f5fb8727000-7f5fb872a000 ---p 00000000 00:00 0 
+7f5fb872a000-7f5fb8b28000 rwxp 00000000 00:00 0                          [stack:12045]
+7f5fb8b28000-7f5fb8b33000 r-xp 00000000 08:01 8005108                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssystemutil.so
+7f5fb8b33000-7f5fb8d33000 ---p 0000b000 08:01 8005108                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssystemutil.so
+7f5fb8d33000-7f5fb8d34000 rw-p 0000b000 08:01 8005108                    /usr/local/comsol50/multiphysics/lib/glnxa64/libcssystemutil.so
+7f5fb8d3a000-7f5fb953c000 rwxp 00000000 00:00 0                          [stack:11994]
+7f5fb9547000-7f5fb95a0000 r--s 0049f000 08:01 7868577                    /usr/local/comsol50/multiphysics/plugins/com.comsol.model_1.0.0.jar
+7f5fb95ae000-7f5fb95bc000 r--s 0010e000 08:01 7868440                    /usr/local/comsol50/multiphysics/plugins/com.comsol.migration_1.0.0.jar
+7f5fb95c3000-7f5fb95ce000 r--s 00363000 08:01 8268173                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/charsets.jar
+7f5fb95cf000-7f5fb95d5000 r--s 00027000 08:01 7868566                    /usr/local/comsol50/multiphysics/plugins/com.comsol.communication_1.0.0.jar
+7f5fb95d7000-7f5fb95fa000 r--s 001ff000 08:01 7868527                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guimph_1.0.0.jar
+7f5fb95fb000-7f5fb9604000 r--s 0010b000 08:01 7868502                    /usr/local/comsol50/multiphysics/plugins/com.comsol.maxwell_1.0.0.jar
+7f5fb9608000-7f5fb961e000 r--s 00230000 08:01 7868414                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.swt.gtk.linux.x86_3.8.1.v3834e.jar
+7f5fb961e000-7f5fb9648000 r--s 0044e000 08:01 7868530                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.jdt.core_3.8.2.v20120814-155456.jar
+7f5fb9649000-7f5fb9664000 r--s 00279000 08:01 7868583                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.swt.win32.win32.x86_3.8.1.v3834e.jar
+7f5fb9671000-7f5fb9672000 r--s 00001000 08:01 7868482                    /usr/local/comsol50/multiphysics/plugins/com.comsol.opt_1.0.0.jar
+7f5fb9673000-7f5fb967e000 r--s 000bb000 08:01 7868571                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.resources_3.8.1.v20120802-154922.jar
+7f5fb9684000-7f5fb9686000 r--s 00004000 08:01 7868461                    /usr/local/comsol50/multiphysics/plugins/com.comsol.capeopen_1.0.0.0.jar
+7f5fb968d000-7f5fb969d000 r--s 00135000 08:01 7868478                    /usr/local/comsol50/multiphysics/plugins/com.comsol.post_1.0.0.jar
+7f5fb96a1000-7f5fb96da000 r--s 005a1000 08:01 7868489                    /usr/local/comsol50/multiphysics/plugins/com.comsol.resources_1.0.0.jar
+7f5fb96dd000-7f5fb96e4000 r--s 00025000 08:01 7868420                    /usr/local/comsol50/multiphysics/plugins/com.comsol.clientapi_1.0.0.jar
+7f5fb96e6000-7f5fb96e8000 r--s 0000e000 08:01 7868561                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guichem_1.0.0.jar
+7f5fb96ea000-7f5fb96ef000 r--s 0002a000 08:01 7868413                    /usr/local/comsol50/multiphysics/plugins/com.comsol.xfiles_1.0.0.jar
+7f5fb96f1000-7f5fb96f5000 r--s 00049000 08:01 7868620                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.jdt.launching_3.6.100.v20120523-1953.jar
+7f5fb96f9000-7f5fb96fb000 r--s 00011000 08:01 7868538                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.databinding.beans_1.2.200.v20120523-1956.jar
+7f5fb96ff000-7f5fb9706000 r--s 000c7000 08:01 7868430                    /usr/local/comsol50/multiphysics/plugins/com.comsol.solver_1.0.0.jar
+7f5fb970b000-7f5fb9715000 r--s 00083000 08:01 7868423                    /usr/local/comsol50/multiphysics/plugins/com.comsol.application_1.0.0.jar
+7f5fb971c000-7f5fb9722000 r--s 0003c000 08:01 7868394                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guitransport_1.0.0.jar
+7f5fb9726000-7f5fb9731000 r--s 0006e000 08:01 7868509                    /usr/local/comsol50/multiphysics/plugins/truezip-6.jar
+7f5fb9734000-7f5fb9737000 r--s 00014000 08:01 7868536                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.ui.views_3.6.100.v20120521-2332.jar
+7f5fb9738000-7f5fb9739000 r--s 00000000 08:01 7868503                    /usr/local/comsol50/multiphysics/plugins/com.comsol.molec_1.0.0.jar
+7f5fb9740000-7f5fb9747000 r--s 00060000 08:01 7868504                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.help.base_3.6.100.v201209141540.jar
+7f5fb9748000-7f5fb974c000 r--s 00068000 08:01 7868424                    /usr/local/comsol50/multiphysics/plugins/com.comsol.reaction_1.0.0.jar
+7f5fb974e000-7f5fb9751000 r--s 0000e000 08:01 7868466                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guiswt_1.0.0.jar
+7f5fb9758000-7f5fb975b000 r--s 000d0000 08:01 7868621                    /usr/local/comsol50/multiphysics/plugins/com.comsol.heat_1.0.0.jar
+7f5fb9760000-7f5fb9761000 r--s 00000000 08:01 7868499                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guimolec_1.0.0.jar
+7f5fb9768000-7f5fb976a000 r--s 00008000 08:01 7868483                    /usr/local/comsol50/multiphysics/plugins/com.comsol.graphicsswing_1.0.0.jar
+7f5fb976d000-7f5fb976f000 r--s 00005000 08:01 7868470                    /usr/local/comsol50/multiphysics/plugins/com.comsol.loader_1.0.0.jar
+7f5fb9774000-7f5fb977c000 r--s 0006c000 08:01 7868444                    /usr/local/comsol50/multiphysics/plugins/com.comsol.bridge_1.0.0.jar
+7f5fb9783000-7f5fb9792000 r--s 000f3000 08:01 7868429                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.emf.ecore_2.5.0.v200906151043.jar
+7f5fb9794000-7f5fb9797000 r--s 0001c000 08:01 7868625                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.jetty.websocket.8.1.9.v20130131.jar
+7f5fb979b000-7f5fb979d000 r--s 00003000 08:01 7868506                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guireaction_1.0.0.jar
+7f5fb979e000-7f5fb97a0000 r--s 00016000 08:01 7868472                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.jetty.http.8.1.9.v20130131.jar
+7f5fb97a2000-7f5fb97a6000 r--s 0002a000 08:01 7868459                    /usr/local/comsol50/multiphysics/plugins/com.comsol.report_1.0.0.jar
+7f5fb97ad000-7f5fb97b2000 r--s 00035000 08:01 7868427                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guiclient_1.0.0.jar
+7f5fb97b7000-7f5fb97b9000 r--s 00017000 08:01 7868500                    /usr/local/comsol50/multiphysics/plugins/com.comsol.microfluidics_1.0.0.jar
+7f5fb97be000-7f5fb97bf000 r--s 0000e000 08:01 7868438                    /usr/local/comsol50/multiphysics/plugins/org.apache.felix.gogo.shell_0.8.0.v201110170705.jar
+7f5fb97c5000-7f5fb97ca000 r--s 0002d000 08:01 7868390                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.databinding_1.4.1.v20120521-2332.jar
+7f5fb97ce000-7f5fb97d0000 r--s 00006000 08:01 7868435                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.ui.cocoa_1.1.1.v20120523-1956.jar
+7f5fb97d2000-7f5fb97d4000 r--s 00012000 08:01 7868522                    /usr/local/comsol50/multiphysics/plugins/org.apache.felix.gogo.runtime_0.8.0.v201108120515.jar
+7f5fb97db000-7f5fb97dc000 r--s 00003000 08:01 7868515                    /usr/local/comsol50/multiphysics/plugins/com.comsol.dbmigration_1.0.0.jar
+7f5fb97e2000-7f5fb97f5000 r--s 000a2000 08:01 7868460                    /usr/local/comsol50/multiphysics/plugins/com.comsol.widgets_1.0.0.jar
+7f5fb97fa000-7f5fb97fc000 r--s 0000a000 08:01 7868425                    /usr/local/comsol50/multiphysics/plugins/com.comsol.mph_1.0.0.jar
+7f5fb9802000-7f5fb9807000 r--s 00052000 08:01 7868505                    /usr/local/comsol50/multiphysics/plugins/com.comsol.roptics_1.0.0.jar
+7f5fb9807000-7f5fb980c000 r--s 0004f000 08:01 7868387                    /usr/local/comsol50/multiphysics/plugins/com.comsol.nativemph_1.0.0.jar
+7f5fb9810000-7f5fb9811000 ---p 00000000 00:00 0 
+7f5fb9811000-7f5fb9821000 rwxp 00000000 00:00 0                          [stack:12094]
+7f5fb9821000-7f5fb9825000 r--s 00031000 08:01 7868417                    /usr/local/comsol50/multiphysics/plugins/com.comsol.batch_1.0.0.jar
+7f5fb9825000-7f5fb9827000 r--s 00015000 08:01 7868467                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.jobs_3.5.200.v20120521-2346.jar
+7f5fb982c000-7f5fb9834000 r--s 000c4000 08:01 7868521                    /usr/local/comsol50/multiphysics/plugins/com.comsol.bfc_1.0.0.jar
+7f5fb983a000-7f5fb983c000 r--s 00022000 08:01 7868498                    /usr/local/comsol50/multiphysics/plugins/com.comsol.mems_1.0.0.jar
+7f5fb9843000-7f5fb9844000 r--s 00003000 08:01 7868397                    /usr/local/comsol50/multiphysics/plugins/com.comsol.nativebasicutil_1.0.0.jar
+7f5fb9844000-7f5fb984e000 r--s 00094000 08:01 7868513                    /usr/local/comsol50/multiphysics/plugins/com.comsol.core_1.0.0.jar
+7f5fb9852000-7f5fb9856000 r--s 00072000 08:01 7868474                    /usr/local/comsol50/multiphysics/plugins/com.comsol.chem_1.0.0.jar
+7f5fb985b000-7f5fb985e000 r--s 0008b000 08:01 7868468                    /usr/local/comsol50/multiphysics/plugins/com.comsol.aco_1.0.0.jar
+7f5fb9860000-7f5fb9863000 r--s 00090000 08:01 7868532                    /usr/local/comsol50/multiphysics/plugins/com.comsol.cfd_1.0.0.jar
+7f5fb9863000-7f5fb9866000 r--s 00013000 08:01 7868605                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.app_1.3.100.v20120522-1841.jar
+7f5fb986c000-7f5fb986f000 r--s 0010c000 08:01 7868428                    /usr/local/comsol50/multiphysics/plugins/com.comsol.acdc_1.0.0.jar
+7f5fb9876000-7f5fb9878000 r--s 00056000 08:01 7868565                    /usr/local/comsol50/multiphysics/plugins/com.comsol.pipe_1.0.0.jar
+7f5fb987e000-7f5fb988a000 r--s 0005e000 08:01 7868445                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.net4j.util_2.0.1.v20100116-1932.jar
+7f5fb9891000-7f5fb9892000 r--s 00019000 08:01 7868567                    /usr/local/comsol50/multiphysics/plugins/com.comsol.woptics_1.0.0.jar
+7f5fb9892000-7f5fb9894000 r--s 00012000 08:01 7868528                    /usr/local/comsol50/multiphysics/plugins/com.comsol.rf_1.0.0.jar
+7f5fb989b000-7f5fb989e000 r--s 00023000 08:01 7868437                    /usr/local/comsol50/multiphysics/plugins/com.comsol.ssf_1.0.0.jar
+7f5fb98a4000-7f5fb98ac000 r--s 0004c000 08:01 7868613                    /usr/local/comsol50/multiphysics/plugins/com.comsol.nativeutil_1.0.0.jar
+7f5fb98b2000-7f5fb98b6000 r--s 00032000 08:01 7868570                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar
+7f5fb98ba000-7f5fb98cf000 r--s 001c2000 08:01 7868480                    /usr/local/comsol50/multiphysics/plugins/com.comsol.design_1.0.0.jar
+7f5fb98d5000-7f5fb98d7000 r--s 0000d000 08:01 7868608                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.filesystem_1.3.200.v20120522-2012.jar
+7f5fb98d8000-7f5fb98df000 r--s 00000000 08:01 5250422                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f5fb98e3000-7f5fb9903000 rw-p 00000000 00:00 0 
+7f5fb9903000-7f5fb9907000 r--s 0001b000 08:01 7868400                    /usr/local/comsol50/multiphysics/plugins/com.comsol.nativejni_1.0.0.jar
+7f5fb990e000-7f5fb9912000 r--s 0002e000 08:01 7868560                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar
+7f5fb9916000-7f5fb991c000 r--s 00016000 08:01 7868388                    /usr/local/comsol50/multiphysics/plugins/com.comsol.api_1.0.0.jar
+7f5fb991c000-7f5fb991f000 r--s 00014000 08:01 7868558                    /usr/local/comsol50/multiphysics/plugins/com.comsol.gui_1.0.0.jar
+7f5fb9921000-7f5fb9923000 r--s 00011000 08:01 7868588                    /usr/local/comsol50/multiphysics/plugins/com.comsol.plasma_1.0.0.jar
+7f5fb9924000-7f5fb9926000 r--s 0046c000 08:01 7868575                    /usr/local/comsol50/multiphysics/plugins/com.comsol.semicond_1.0.0.jar
+7f5fb9929000-7f5fb992f000 r--s 00061000 08:01 7868529                    /usr/local/comsol50/multiphysics/plugins/com.comsol.physics_1.0.0.jar
+7f5fb992f000-7f5fb993a000 r--s 00117000 08:01 7868471                    /usr/local/comsol50/multiphysics/plugins/com.comsol.solid_1.0.0.jar
+7f5fb993e000-7f5fb9949000 r--s 000fe000 08:01 7868602                    /usr/local/comsol50/multiphysics/plugins/com.comsol.geommesh_1.0.0.jar
+7f5fb994e000-7f5fb9953000 r--s 00076000 08:01 7868389                    /usr/local/comsol50/multiphysics/plugins/com.comsol.particle_1.0.0.jar
+7f5fb9957000-7f5fb9970000 r--s 002af000 08:01 7868526                    /usr/local/comsol50/multiphysics/plugins/com.comsol.transport_1.0.0.jar
+7f5fb9970000-7f5fb9972000 r--s 00008000 08:01 7868396                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.log_1.2.300.v20120522-2049.jar
+7f5fb9972000-7f5fb9973000 r--s 00002000 08:01 7868496                    /usr/local/comsol50/multiphysics/plugins/com.comsol.logger_1.0.0.jar
+7f5fb997a000-7f5fb997d000 r--s 00012000 08:01 7868589                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.osgi.services_3.3.100.v20120522-1822.jar
+7f5fb9981000-7f5fb9984000 r--s 00019000 08:01 7868443                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.console_1.0.0.v20120522-1841.jar
+7f5fb9988000-7f5fb9989000 r--s 00000000 08:01 7868399                    /usr/local/comsol50/multiphysics/plugins/com.comsol.init_1.0.0.jar
+7f5fb998d000-7f5fb998f000 r--s 00015000 08:01 7868493                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.runtime.compatibility_3.2.200.jar
+7f5fb9991000-7f5fb9993000 r--s 00011000 08:01 7868574                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar
+7f5fb9994000-7f5fb9997000 r--s 0001c000 08:01 7868591                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar
+7f5fb9998000-7f5fb999b000 r--s 00018000 08:01 7868518                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar
+7f5fb99a2000-7f5fb99a5000 r--s 0002a000 08:01 7868619                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.registry_3.5.200.v20120522-1841.jar
+7f5fb99ad000-7f5fb99af000 r--s 0000d000 08:01 7868539                    /usr/local/comsol50/multiphysics/plugins/org.apache.felix.gogo.command_0.8.0.v201108120515.jar
+7f5fb99b5000-7f5fb99b7000 r--s 00015000 08:01 7868516                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar
+7f5fb99b8000-7f5fb99c7000 r-xp 00000000 08:01 8004941                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200/eclipse_1502.so
+7f5fb99c7000-7f5fb9ac7000 ---p 0000f000 08:01 8004941                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200/eclipse_1502.so
+7f5fb9ac7000-7f5fb9ac8000 rw-p 0000f000 08:01 8004941                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200/eclipse_1502.so
+7f5fb9ac8000-7f5fb9ac9000 rw-p 00000000 00:00 0 
+7f5fb9acf000-7f5fb9ed0000 rwxp 00000000 00:00 0                          [stack:11986]
+7f5fb9ed6000-7f5fb9ed9000 r--s 00016000 08:01 7868552                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.jetty.servlet.8.1.9.v20130131.jar
+7f5fb9edb000-7f5fb9edc000 r--s 00003000 08:01 7868490                    /usr/local/comsol50/multiphysics/plugins/com.comsol.guimphappl_1.0.0.jar
+7f5fb9edd000-7f5fba6df000 rwxp 00000000 00:00 0                          [stack:11983]
+7f5fba6df000-7f5fba6e2000 ---p 00000000 00:00 0 
+7f5fba6e2000-7f5fbaae0000 rwxp 00000000 00:00 0                          [stack:12071]
+7f5fbaae6000-7f5fbb2e8000 rwxp 00000000 00:00 0                          [stack:11978]
+7f5fbb2f4000-7f5fbb2f7000 ---p 00000000 00:00 0 
+7f5fbb2f7000-7f5fbb6f5000 rwxp 00000000 00:00 0                          [stack:13136]
+7f5fbb6f5000-7f5fbb6f8000 r--s 000f5000 08:01 8395872                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/ext/localedata.jar
+7f5fbb6fc000-7f5fbb6ff000 ---p 00000000 00:00 0 
+7f5fbb6ff000-7f5fbbafd000 rwxp 00000000 00:00 0                          [stack:12073]
+7f5fbbafd000-7f5fbbb01000 r--s 0002d000 08:01 8395873                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/ext/sunjce_provider.jar
+7f5fbbb07000-7f5fbbb0a000 r--s 00037000 08:01 8395876                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/ext/sunpkcs11.jar
+7f5fbbb11000-7f5fbbb13000 r--s 00019000 08:01 8268162                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/jce.jar
+7f5fbbb15000-7f5fbbb19000 r--s 0007d000 08:01 8268168                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/jsse.jar
+7f5fbbb20000-7f5fbbf21000 rwxp 00000000 00:00 0                          [stack:11943]
+7f5fbbf21000-7f5fbbf2b000 r--s 00251000 08:01 8268170                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/resources.jar
+7f5fbbf30000-7f5fbbf32000 r--s 00008000 08:01 7345539                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/taglibs-standard-spec-1.2.1.jar
+7f5fbbf32000-7f5fbbf33000 r--s 00002000 08:01 7345545                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/slf4j-log4j12-1.6.6.jar
+7f5fbbf34000-7f5fbbf37000 r--s 0001c000 08:01 7345550                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jasper-el.jar
+7f5fbbf3b000-7f5fbbf3f000 r--s 0003b000 08:01 7345553                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/catalina-tribes.jar
+7f5fbbf43000-7f5fbbf45000 r--s 00033000 08:01 7345556                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/waffle-tomcat7.jar
+7f5fbbf4b000-7f5fbbf4d000 r--s 00003000 08:01 7345530                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jcl-over-slf4j-1.6.6.jar
+7f5fbbf4d000-7f5fbbf52000 r--s 0002d000 08:01 7345532                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/taglibs-standard-impl-1.2.1.jar
+7f5fbbf58000-7f5fbbf5c000 r--s 00028000 08:01 7345548                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat7-websocket.jar
+7f5fbbf5e000-7f5fbbf87000 r--s 001ee000 08:01 7345534                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/guava-14.0.1.jar
+7f5fbbf8b000-7f5fbbf8d000 r--s 0000b000 08:01 7345523                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-i18n-ja.jar
+7f5fbbf8d000-7f5fbbf8f000 r--s 0001d000 08:01 7345535                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-jdbc.jar
+7f5fbbf95000-7f5fbbf97000 r--s 00005000 08:01 7345555                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/slf4j-api-1.7.5.jar
+7f5fbbf97000-7f5fbbf99000 r--s 0001f000 08:01 7345554                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/catalina-ha.jar
+7f5fbbf9c000-7f5fbbf9e000 r--s 0000c000 08:01 7345533                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/catalina-ant.jar
+7f5fbbfa5000-7f5fbbfb6000 r--s 00155000 08:01 7345542                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jna-platform-4.1.0.jar
+7f5fbbfb7000-7f5fbbfb8000 r--s 00007000 08:01 7345546                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-util.jar
+7f5fbbfbe000-7f5fbbfc1000 r--s 0002e000 08:01 7345552                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/servlet-api.jar
+7f5fbbfc4000-7f5fbbfc8000 r--s 000dc000 08:01 7345551                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jna-4.1.0.jar
+7f5fbbfcc000-7f5fbbfd4000 r--s 0008c000 08:01 7345543                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jasper.jar
+7f5fbbfd5000-7f5fbbfde000 r--s 0006d000 08:01 7345531                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/log4j-1.2.16.jar
+7f5fbbfdf000-7f5fbbfec000 r--s 000bf000 08:01 7345528                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-coyote.jar
+7f5fbbff0000-7f5fbbfff000 r--s 001b0000 08:01 7345537                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/ecj-4.3.1.jar
+7f5fbc000000-7f5fbc039000 rw-p 00000000 00:00 0 
+7f5fbc039000-7f5fc0000000 ---p 00000000 00:00 0 
+7f5fc0000000-7f5fc002e000 rw-p 00000000 00:00 0 
+7f5fc002e000-7f5fc4000000 ---p 00000000 00:00 0 
+7f5fc4000000-7f5fc402b000 rw-p 00000000 00:00 0 
+7f5fc402b000-7f5fc8000000 ---p 00000000 00:00 0 
+7f5fc8000000-7f5fc8041000 rw-p 00000000 00:00 0 
+7f5fc8041000-7f5fcc000000 ---p 00000000 00:00 0 
+7f5fcc000000-7f5fcc02a000 rw-p 00000000 00:00 0 
+7f5fcc02a000-7f5fd0000000 ---p 00000000 00:00 0 
+7f5fd0003000-7f5fd0006000 r--s 00013000 08:01 7345527                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jsp-api.jar
+7f5fd000a000-7f5fd000c000 r--s 0000a000 08:01 7345536                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-i18n-fr.jar
+7f5fd0011000-7f5fd0014000 r--s 00029000 08:01 7345540                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/waffle-jna.jar
+7f5fd0016000-7f5fd001a000 r--s 00036000 08:01 7345549                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-dbcp.jar
+7f5fd001a000-7f5fd001c000 r--s 0000a000 08:01 7345526                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/el-api.jar
+7f5fd0021000-7f5fd0022000 r--s 00001000 08:01 7345524                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/jul-to-slf4j-1.6.6.jar
+7f5fd0023000-7f5fd0035000 r--s 00173000 08:01 7345541                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/catalina.jar
+7f5fd0035000-7f5fd0037000 r--s 00005000 08:01 7345538                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/slf4j-api-1.6.6.jar
+7f5fd0037000-7f5fd0039000 r--s 00007000 08:01 7345529                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/websocket-api.jar
+7f5fd0040000-7f5fd0048000 r-xp 00000000 08:01 9050659                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libmanagement.so
+7f5fd0048000-7f5fd0247000 ---p 00008000 08:01 9050659                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libmanagement.so
+7f5fd0247000-7f5fd0248000 rw-p 00007000 08:01 9050659                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libmanagement.so
+7f5fd0249000-7f5fd025d000 r--s 00141000 08:01 7868590                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.osgi_3.8.1.v20120830-144521.jar
+7f5fd0260000-7f5fd0270000 r-xp 00000000 08:01 9050695                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libnio.so
+7f5fd0270000-7f5fd0470000 ---p 00010000 08:01 9050695                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libnio.so
+7f5fd0470000-7f5fd0471000 rw-p 00010000 08:01 9050695                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libnio.so
+7f5fd0477000-7f5fd04a8000 rw-p 00000000 00:00 0 
+7f5fd04a8000-7f5fd04be000 r-xp 00000000 08:01 9050660                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libnet.so
+7f5fd04be000-7f5fd06be000 ---p 00016000 08:01 9050660                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libnet.so
+7f5fd06be000-7f5fd06bf000 rw-p 00016000 08:01 9050660                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libnet.so
+7f5fd06c3000-7f5fd06c4000 ---p 00000000 00:00 0 
+7f5fd06c4000-7f5fd0bc5000 rwxp 00000000 00:00 0                          [stack:11935]
+7f5fd0bc5000-7f5fd0bc6000 ---p 00000000 00:00 0 
+7f5fd0bc6000-7f5fd0cc6000 rwxp 00000000 00:00 0                          [stack:11934]
+7f5fd0cc6000-7f5fd0cc7000 ---p 00000000 00:00 0 
+7f5fd0cc7000-7f5fd11c8000 rwxp 00000000 00:00 0                          [stack:11932]
+7f5fd11c8000-7f5fd1491000 r--p 00000000 08:01 4983617                    /usr/lib/locale/locale-archive
+7f5fd1492000-7f5fd1c94000 rwxp 00000000 00:00 0                          [stack:11930]
+7f5fd1c94000-7f5fd1c95000 ---p 00000000 00:00 0 
+7f5fd1c95000-7f5fd1d95000 rwxp 00000000 00:00 0                          [stack:11929]
+7f5fd1d95000-7f5fd4000000 rw-p 00000000 00:00 0 
+7f5fd4000000-7f5fd4043000 rw-p 00000000 00:00 0 
+7f5fd4043000-7f5fd8000000 ---p 00000000 00:00 0 
+7f5fd8000000-7f5fd8038000 rw-p 00000000 00:00 0 
+7f5fd8038000-7f5fdc000000 ---p 00000000 00:00 0 
+7f5fdc000000-7f5fdc02d000 rw-p 00000000 00:00 0 
+7f5fdc02d000-7f5fe0000000 ---p 00000000 00:00 0 
+7f5fe0002000-7f5fe4000000 rw-p 00000000 00:00 0 
+7f5fe4000000-7f5fe4036000 rw-p 00000000 00:00 0 
+7f5fe4036000-7f5fe8000000 ---p 00000000 00:00 0 
+7f5fe8000000-7f5fe8040000 rw-p 00000000 00:00 0 
+7f5fe8040000-7f5fec000000 ---p 00000000 00:00 0 
+7f5fec000000-7f5fec048000 rw-p 00000000 00:00 0 
+7f5fec048000-7f5ff0000000 ---p 00000000 00:00 0 
+7f5ff0000000-7f5ff002c000 rw-p 00000000 00:00 0 
+7f5ff002c000-7f5ff4000000 ---p 00000000 00:00 0 
+7f5ff4000000-7f5ff4045000 rw-p 00000000 00:00 0 
+7f5ff4045000-7f5ff8000000 ---p 00000000 00:00 0 
+7f5ff8000000-7f5ff8023000 rw-p 00000000 00:00 0 
+7f5ff8023000-7f5ffc000000 ---p 00000000 00:00 0 
+7f5ffc000000-7f5ffc03c000 rw-p 00000000 00:00 0 
+7f5ffc03c000-7f6000000000 ---p 00000000 00:00 0 
+7f6000000000-7f600003f000 rw-p 00000000 00:00 0 
+7f600003f000-7f6004000000 ---p 00000000 00:00 0 
+7f6004000000-7f6004021000 rw-p 00000000 00:00 0 
+7f6004021000-7f6008000000 ---p 00000000 00:00 0 
+7f6008000000-7f600802f000 rw-p 00000000 00:00 0 
+7f600802f000-7f600c000000 ---p 00000000 00:00 0 
+7f600c000000-7f600c037000 rw-p 00000000 00:00 0 
+7f600c037000-7f6010000000 ---p 00000000 00:00 0 
+7f6010000000-7f6010035000 rw-p 00000000 00:00 0 
+7f6010035000-7f6014000000 ---p 00000000 00:00 0 
+7f6014000000-7f601402e000 rw-p 00000000 00:00 0 
+7f601402e000-7f6018000000 ---p 00000000 00:00 0 
+7f6018000000-7f601802e000 rw-p 00000000 00:00 0 
+7f601802e000-7f601c000000 ---p 00000000 00:00 0 
+7f601c003000-7f601c005000 r--s 00003000 08:01 7345544                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/annotations-api.jar
+7f601c00a000-7f601d000000 rw-p 00000000 00:00 0 
+7f601d000000-7f601da90000 rwxp 00000000 00:00 0 
+7f601da90000-7f602061a000 rw-p 00000000 00:00 0 
+7f602061a000-7f6024000000 ---p 00000000 00:00 0 
+7f6024001000-7f6024004000 r--s 00011000 08:01 7345525                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-i18n-es.jar
+7f602400a000-7f6024015000 r--s 0023a000 08:01 7868510                    /usr/local/comsol50/multiphysics/plugins/com.comsol.util_1.0.0.jar
+7f6024018000-7f6024164000 rw-p 00000000 00:00 0 
+7f6024164000-7f6024323000 r--s 031c4000 08:01 8268165                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/rt.jar
+7f6024324000-7f602461a000 rw-p 00000000 00:00 0 
+7f602461a000-7f602461b000 ---p 00000000 00:00 0 
+7f602461b000-7f602471b000 rwxp 00000000 00:00 0                          [stack:11916]
+7f602471b000-7f602471c000 ---p 00000000 00:00 0 
+7f602471c000-7f602481c000 rwxp 00000000 00:00 0                          [stack:11915]
+7f602481c000-7f602481d000 ---p 00000000 00:00 0 
+7f602481d000-7f602491d000 rwxp 00000000 00:00 0                          [stack:11914]
+7f602491d000-7f602491e000 ---p 00000000 00:00 0 
+7f602491e000-7f6024a1e000 rwxp 00000000 00:00 0                          [stack:11913]
+7f6024a1e000-7f6024a1f000 ---p 00000000 00:00 0 
+7f6024a1f000-7f6024b1f000 rwxp 00000000 00:00 0                          [stack:11912]
+7f6024b1f000-7f6024b20000 ---p 00000000 00:00 0 
+7f6024b20000-7f6024c20000 rwxp 00000000 00:00 0                          [stack:11911]
+7f6024c20000-7f6024c21000 ---p 00000000 00:00 0 
+7f6024c21000-7f6024d21000 rwxp 00000000 00:00 0                          [stack:11910]
+7f6024d21000-7f6024d22000 ---p 00000000 00:00 0 
+7f6024d22000-7f6024e22000 rwxp 00000000 00:00 0                          [stack:11909]
+7f6024e22000-7f6024e23000 ---p 00000000 00:00 0 
+7f6024e23000-7f6024f23000 rwxp 00000000 00:00 0                          [stack:11908]
+7f6024f23000-7f6024f24000 ---p 00000000 00:00 0 
+7f6024f24000-7f6025024000 rwxp 00000000 00:00 0                          [stack:11907]
+7f6025024000-7f6025025000 ---p 00000000 00:00 0 
+7f6025025000-7f6025125000 rwxp 00000000 00:00 0                          [stack:11906]
+7f6025125000-7f6025126000 ---p 00000000 00:00 0 
+7f6025126000-7f6025226000 rwxp 00000000 00:00 0                          [stack:11905]
+7f6025226000-7f6025227000 ---p 00000000 00:00 0 
+7f6025227000-7f6025327000 rwxp 00000000 00:00 0                          [stack:11904]
+7f6025327000-7f6025328000 ---p 00000000 00:00 0 
+7f6025328000-7f6025428000 rwxp 00000000 00:00 0                          [stack:11903]
+7f6025428000-7f6025429000 ---p 00000000 00:00 0 
+7f6025429000-7f6025529000 rwxp 00000000 00:00 0                          [stack:11902]
+7f6025529000-7f602552a000 ---p 00000000 00:00 0 
+7f602552a000-7f602562a000 rwxp 00000000 00:00 0                          [stack:11901]
+7f602562a000-7f602562b000 ---p 00000000 00:00 0 
+7f602562b000-7f602572b000 rwxp 00000000 00:00 0                          [stack:11900]
+7f602572b000-7f602572c000 ---p 00000000 00:00 0 
+7f602572c000-7f602582c000 rwxp 00000000 00:00 0                          [stack:11899]
+7f602582c000-7f602582d000 ---p 00000000 00:00 0 
+7f602582d000-7f602592d000 rwxp 00000000 00:00 0                          [stack:11898]
+7f602592d000-7f602592e000 ---p 00000000 00:00 0 
+7f602592e000-7f6025a2e000 rwxp 00000000 00:00 0                          [stack:11897]
+7f6025a2e000-7f6025a2f000 ---p 00000000 00:00 0 
+7f6025a2f000-7f6025b2f000 rwxp 00000000 00:00 0                          [stack:11896]
+7f6025b2f000-7f6025b30000 ---p 00000000 00:00 0 
+7f6025b30000-7f6025c30000 rwxp 00000000 00:00 0                          [stack:11895]
+7f6025c30000-7f6025c31000 ---p 00000000 00:00 0 
+7f6025c31000-7f6025d31000 rwxp 00000000 00:00 0                          [stack:11894]
+7f6025d31000-7f6025d65000 rw-p 00000000 00:00 0 
+7f6025d65000-7f6025e87000 rw-p 00000000 00:00 0 
+7f6025e87000-7f6025ec3000 rw-p 00000000 00:00 0 
+7f6025ec3000-7f6025eda000 ---p 00000000 00:00 0 
+7f6025eda000-7f6025f07000 rw-p 00000000 00:00 0 
+7f6025f07000-7f6025f3b000 rw-p 00000000 00:00 0 
+7f6025f3b000-7f602605c000 rw-p 00000000 00:00 0 
+7f602605c000-7f6026107000 rw-p 00000000 00:00 0 
+7f6026107000-7f6026108000 rw-p 00000000 00:00 0 
+7f6026108000-7f6026122000 r-xp 00000000 08:01 9050661                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libzip.so
+7f6026122000-7f6026322000 ---p 0001a000 08:01 9050661                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libzip.so
+7f6026322000-7f6026323000 rw-p 0001a000 08:01 9050661                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libzip.so
+7f6026328000-7f6026333000 r-xp 00000000 08:01 19403029                   /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6026333000-7f6026532000 ---p 0000b000 08:01 19403029                   /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6026532000-7f6026533000 r--p 0000a000 08:01 19403029                   /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6026533000-7f6026534000 rw-p 0000b000 08:01 19403029                   /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6026538000-7f6026543000 r-xp 00000000 08:01 19403723                   /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6026543000-7f6026742000 ---p 0000b000 08:01 19403723                   /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6026742000-7f6026743000 r--p 0000a000 08:01 19403723                   /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6026743000-7f6026744000 rw-p 0000b000 08:01 19403723                   /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6026748000-7f602675f000 r-xp 00000000 08:01 19403686                   /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f602675f000-7f602695e000 ---p 00017000 08:01 19403686                   /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f602695e000-7f602695f000 r--p 00016000 08:01 19403686                   /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f602695f000-7f6026960000 rw-p 00017000 08:01 19403686                   /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f6026960000-7f6026962000 rw-p 00000000 00:00 0 
+7f6026968000-7f6026971000 r-xp 00000000 08:01 19403681                   /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6026971000-7f6026b70000 ---p 00009000 08:01 19403681                   /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6026b70000-7f6026b71000 r--p 00008000 08:01 19403681                   /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6026b71000-7f6026b72000 rw-p 00009000 08:01 19403681                   /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6026b78000-7f6026ba1000 r-xp 00000000 08:01 9050677                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjava.so
+7f6026ba1000-7f6026da1000 ---p 00029000 08:01 9050677                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjava.so
+7f6026da1000-7f6026da3000 rw-p 00029000 08:01 9050677                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjava.so
+7f6026da8000-7f6026db5000 r-xp 00000000 08:01 9050696                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libverify.so
+7f6026db5000-7f6026fb4000 ---p 0000d000 08:01 9050696                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libverify.so
+7f6026fb4000-7f6026fb6000 rw-p 0000c000 08:01 9050696                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libverify.so
+7f6026fb8000-7f6026fbf000 r-xp 00000000 08:01 19403713                   /lib/x86_64-linux-gnu/librt-2.19.so
+7f6026fbf000-7f60271be000 ---p 00007000 08:01 19403713                   /lib/x86_64-linux-gnu/librt-2.19.so
+7f60271be000-7f60271bf000 r--p 00006000 08:01 19403713                   /lib/x86_64-linux-gnu/librt-2.19.so
+7f60271bf000-7f60271c0000 rw-p 00007000 08:01 19403713                   /lib/x86_64-linux-gnu/librt-2.19.so
+7f60271c7000-7f60271c8000 ---p 00000000 00:00 0 
+7f60271c8000-7f60275c8000 rwxp 00000000 00:00 0                          [stack:11893]
+7f60275c8000-7f60276cd000 r-xp 00000000 08:01 19402365                   /lib/x86_64-linux-gnu/libm-2.19.so
+7f60276cd000-7f60278cc000 ---p 00105000 08:01 19402365                   /lib/x86_64-linux-gnu/libm-2.19.so
+7f60278cc000-7f60278cd000 r--p 00104000 08:01 19402365                   /lib/x86_64-linux-gnu/libm-2.19.so
+7f60278cd000-7f60278ce000 rw-p 00105000 08:01 19402365                   /lib/x86_64-linux-gnu/libm-2.19.so
+7f60278d0000-7f6028440000 r-xp 00000000 08:01 9194620                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/server/libjvm.so
+7f6028440000-7f602863f000 ---p 00b70000 08:01 9194620                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/server/libjvm.so
+7f602863f000-7f6028704000 rw-p 00b6f000 08:01 9194620                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/server/libjvm.so
+7f6028704000-7f6028744000 rw-p 00000000 00:00 0 
+7f6028748000-7f6028903000 r-xp 00000000 08:01 19403707                   /lib/x86_64-linux-gnu/libc-2.19.so
+7f6028903000-7f6028b02000 ---p 001bb000 08:01 19403707                   /lib/x86_64-linux-gnu/libc-2.19.so
+7f6028b02000-7f6028b06000 r--p 001ba000 08:01 19403707                   /lib/x86_64-linux-gnu/libc-2.19.so
+7f6028b06000-7f6028b08000 rw-p 001be000 08:01 19403707                   /lib/x86_64-linux-gnu/libc-2.19.so
+7f6028b08000-7f6028b0d000 rw-p 00000000 00:00 0 
+7f6028b10000-7f6028b13000 r-xp 00000000 08:01 19403043                   /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6028b13000-7f6028d12000 ---p 00003000 08:01 19403043                   /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6028d12000-7f6028d13000 r--p 00002000 08:01 19403043                   /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6028d13000-7f6028d14000 rw-p 00003000 08:01 19403043                   /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6028d18000-7f6028d2e000 r-xp 00000000 08:01 9194614                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/jli/libjli.so
+7f6028d2e000-7f6028f2e000 ---p 00016000 08:01 9194614                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/jli/libjli.so
+7f6028f2e000-7f6028f2f000 rw-p 00016000 08:01 9194614                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/jli/libjli.so
+7f6028f30000-7f6028f49000 r-xp 00000000 08:01 19403709                   /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6028f49000-7f6029148000 ---p 00019000 08:01 19403709                   /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6029148000-7f6029149000 r--p 00018000 08:01 19403709                   /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6029149000-7f602914a000 rw-p 00019000 08:01 19403709                   /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f602914a000-7f602914e000 rw-p 00000000 00:00 0 
+7f6029150000-7f6029152000 r-xp 00000000 08:01 9050658                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjsig.so
+7f6029152000-7f6029351000 ---p 00002000 08:01 9050658                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjsig.so
+7f6029351000-7f6029352000 rw-p 00001000 08:01 9050658                    /usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjsig.so
+7f6029352000-7f6029353000 rw-p 00000000 00:00 0 
+7f6029358000-7f602937b000 r-xp 00000000 08:01 19403699                   /lib/x86_64-linux-gnu/ld-2.19.so
+7f6029381000-7f6029382000 r--s 00001000 08:01 7345547                    /usr/local/comsol50/multiphysics/bin/tomcat/lib/tomcat-api.jar
+7f6029383000-7f6029385000 r--s 0000b000 08:01 7868573                    /usr/local/comsol50/multiphysics/plugins/org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar
+7f6029387000-7f6029388000 r--s 00007000 08:01 7868551                    /usr/local/comsol50/multiphysics/plugins/com.comsol.systemutils_1.0.0.jar
+7f6029388000-7f602938a000 r--s 00008000 08:01 7345562                    /usr/local/comsol50/multiphysics/bin/tomcat/bin/tomcat-juli.jar
+7f602938d000-7f602938e000 r--s 00005000 08:01 7345564                    /usr/local/comsol50/multiphysics/bin/tomcat/bin/commons-daemon.jar
+7f602938e000-7f6029390000 r--s 00006000 08:01 7345566                    /usr/local/comsol50/multiphysics/bin/tomcat/bin/bootstrap.jar
+7f6029391000-7f6029393000 rw-p 00000000 00:00 0 
+7f6029393000-7f6029394000 r--p 00000000 00:00 0 
+7f6029394000-7f602946c000 rw-p 00000000 00:00 0 
+7f602946c000-7f6029483000 ---p 00000000 00:00 0 
+7f6029483000-7f60294b0000 rw-p 00000000 00:00 0 
+7f60294b0000-7f60294db000 rw-p 00000000 00:00 0 
+7f60294db000-7f6029570000 rw-p 00000000 00:00 0 
+7f6029570000-7f6029578000 rw-s 00000000 08:01 35393645                   /tmp/hsperfdata_frees/11892
+7f6029578000-7f6029579000 rw-p 00000000 00:00 0 
+7f6029579000-7f602957a000 r--p 00000000 00:00 0 
+7f602957a000-7f602957b000 r--p 00022000 08:01 19403699                   /lib/x86_64-linux-gnu/ld-2.19.so
+7f602957b000-7f602957c000 rw-p 00023000 08:01 19403699                   /lib/x86_64-linux-gnu/ld-2.19.so
+7f602957c000-7f602957f000 rw-p 00000000 00:00 0 
+7f602957f000-7f6029584000 rw-p 00000000 00:00 0 
+7fff71eba000-7fff71ed9000 rwxp 00000000 00:00 0                          [stack]
+7fff71ed9000-7fff71edc000 rw-p 00000000 00:00 0 
+7fff71ff8000-7fff71ffa000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dcs.tomcatdir=/home/frees/.comsol/v50/tomcat -Dcs.root=/usr/local/comsol50/multiphysics -Dcatalina.home=/usr/local/comsol50/multiphysics/bin/tomcat -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dcs.logoutput=file -Dcs.logfileprefix=mphserver -Xss4m -Xms40m -Xmx1024m -XX:MaxPermSize=256m 
+java_command: com.comsol.util.application.ServerApplication
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
+LD_LIBRARY_PATH=/usr/local/comsol50/multiphysics/ext/graphicsmagick/glnxa64/:/usr/local/comsol50/multiphysics/ext/cadimport/glnxa64:/usr/local/comsol50/multiphysics/lib/glnxa64/ipv4:/usr/local/comsol50/multiphysics/lib/glnxa64
+LD_PRELOAD=/usr/local/comsol50/multiphysics/java/glnxa64/jre/lib/amd64/libjsig.so
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x99f4a0], sa_mask[0]=0x7fffffff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x99f4a0], sa_mask[0]=0x7fffffff, sa_flags=0x10000004
+SIGFPE: [libGraphicsMagick.so+0xd836f], sa_mask[0]=0x00000000, sa_flags=0x20000000
+SIGPIPE: SIG_IGN, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGXFSZ: SIG_IGN, sa_mask[0]=0x00000000, sa_flags=0x20000000
+SIGILL: [libcsnutil.so+0x90de0], sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x81c060], sa_mask[0]=0x00000000, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x81d160], sa_mask[0]=0x00000000, sa_flags=0x20000000
+SIGINT: SIG_IGN, sa_mask[0]=0x00000000, sa_flags=0x20000000
+SIGTERM: [libjvm.so+0x81d160], sa_mask[0]=0x00000000, sa_flags=0x20000000
+SIGQUIT: [libjvm.so+0x81d160], sa_mask[0]=0x00000000, sa_flags=0x20000000
+
+
+---------------  S Y S T E M  ---------------
+
+OS:jessie/sid
+
+uname:Linux 3.13.0-44-generic #73-Ubuntu SMP Tue Dec 16 00:22:43 UTC 2014 x86_64
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 1030721, NOFILE 4096, AS infinity
+load average:5.11 6.73 7.37
+
+/proc/meminfo:
+MemTotal:       132019856 kB
+MemFree:        21779468 kB
+Buffers:          635668 kB
+Cached:         99353340 kB
+SwapCached:            0 kB
+Active:         100477548 kB
+Inactive:        2837252 kB
+Active(anon):    3326788 kB
+Inactive(anon):    28408 kB
+Active(file):   97150760 kB
+Inactive(file):  2808844 kB
+Unevictable:          32 kB
+Mlocked:              32 kB
+SwapTotal:      134200316 kB
+SwapFree:       134200316 kB
+Dirty:               148 kB
+Writeback:             0 kB
+AnonPages:       3330188 kB
+Mapped:           355576 kB
+Shmem:             29404 kB
+Slab:            6016860 kB
+SReclaimable:    5834804 kB
+SUnreclaim:       182056 kB
+KernelStack:        8192 kB
+PageTables:        46904 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    200210244 kB
+Committed_AS:    6152312 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      585080 kB
+VmallocChunk:   34257921460 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   2250752 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      124416 kB
+DirectMap2M:     8247296 kB
+DirectMap1G:    125829120 kB
+
+
+CPU:total 32 (16 cores per cpu, 1 threads per core) family 21 model 1 stepping 2, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, mmxext, 3dnowpref, lzcnt, sse4a, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 32
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 1
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 33
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 2
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 34
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 3
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 35
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 4
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 4
+cpu cores	: 8
+apicid		: 36
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 5
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 5
+cpu cores	: 8
+apicid		: 37
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 6
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 6
+cpu cores	: 8
+apicid		: 38
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 7
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 7
+cpu cores	: 8
+apicid		: 39
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 8
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 40
+initial apicid	: 8
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 9
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 41
+initial apicid	: 9
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 10
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 42
+initial apicid	: 10
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 11
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 43
+initial apicid	: 11
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 12
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 4
+cpu cores	: 8
+apicid		: 44
+initial apicid	: 12
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 13
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 5
+cpu cores	: 8
+apicid		: 45
+initial apicid	: 13
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 14
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 6
+cpu cores	: 8
+apicid		: 46
+initial apicid	: 14
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 15
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 16
+core id		: 7
+cpu cores	: 8
+apicid		: 47
+initial apicid	: 15
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 16
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 64
+initial apicid	: 32
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 17
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 65
+initial apicid	: 33
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 18
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 66
+initial apicid	: 34
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 19
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 67
+initial apicid	: 35
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 20
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 4
+cpu cores	: 8
+apicid		: 68
+initial apicid	: 36
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 21
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 5
+cpu cores	: 8
+apicid		: 69
+initial apicid	: 37
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 22
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 6
+cpu cores	: 8
+apicid		: 70
+initial apicid	: 38
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 23
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 7
+cpu cores	: 8
+apicid		: 71
+initial apicid	: 39
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 24
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 72
+initial apicid	: 40
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 25
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 73
+initial apicid	: 41
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 26
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 74
+initial apicid	: 42
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 27
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 75
+initial apicid	: 43
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 28
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 4
+cpu cores	: 8
+apicid		: 76
+initial apicid	: 44
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 29
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 5
+cpu cores	: 8
+apicid		: 77
+initial apicid	: 45
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 30
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 2300.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 6
+cpu cores	: 8
+apicid		: 78
+initial apicid	: 46
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+processor	: 31
+vendor_id	: AuthenticAMD
+cpu family	: 21
+model		: 1
+model name	: AMD Opteron(TM) Processor 6276                 
+stepping	: 2
+microcode	: 0x6000626
+cpu MHz		: 1400.000
+cache size	: 2048 KB
+physical id	: 1
+siblings	: 16
+core id		: 7
+cpu cores	: 8
+apicid		: 79
+initial apicid	: 47
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt lwp fma4 nodeid_msr topoext perfctr_core perfctr_nb arat cpb hw_pstate npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold vmmcall
+bogomips	: 4599.95
+TLB size	: 1536 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management: ts ttp tm 100mhzsteps hwpstate cpb
+
+
+
+Memory: 4k page, physical 132019856k(21779468k free), swap 134200316k(134200316k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.65-b04) for linux-amd64 JRE (1.7.0_67-b01), built on Jul 25 2014 09:20:21 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Tue Apr 21 08:37:48 2015
+elapsed time: 3532 seconds
+

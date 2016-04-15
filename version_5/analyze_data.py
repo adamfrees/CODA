@@ -42,7 +42,8 @@ class processData:
             regionList += [((75,150),(81,144))] #RR
             regionList += [((62,75),(70,81))]   #LQ
             regionList += [((75,88),(70,81))]   #RQ
-            guesses = [['leftDot',[65,75]],['rightDot',[80,75]],['leftLead',[50,110]],['rightLead',[90,110]]]
+            #guesses = [['leftDot',[65,75]],['rightDot',[80,75]],['leftLead',[65,110]],['rightLead',[80,110]]]#['leftLead',[50,110]],['rightLead',[90,110]]]
+            guesses = [['leftDot',[70,75]],['rightDot',[80,75]],['leftLead',[70,110]],['rightLead',[80,110]]]
             tunnelingPairs = [[0,1],[0,2],[1,3]]
         elif modelType ==1:
             regionList += [((43,60),(43,70))]   #LQ1
@@ -51,17 +52,6 @@ class processData:
             regionList += [((92,108),(80,105))] #RQ2
             guesses = [['leftDotQ1',[50,55]],['rightDotQ1',[75,55]],['leftDotQ2',[75,100]],['rightDotQ2',[100,100]]]
             tunnelingPairs = [[0,1],[2,3]]
-        elif modelType ==2:
-            regionList += [((20,30),(60,90))]   #LQ1
-            regionList += [((32,42),(60,90))]   #RQ1
-            regionList += [((49,59),(60,90))]   #LQ2
-            regionList += [((61,71),(60,90))]   #RQ2
-            regionList += [((78,88),(60,90))]   #LQ3
-            regionList += [((90,100),(60,90))]  #RQ3
-            regionList += [((107,117),(60,90))] #LQ4
-            regionList += [((119,129),(60,90))] #RQ4
-            guesses = [['leftDotQ1',[25,75]],['rightDotQ1',[37,75]],['leftDotQ2',[54,75]],['rightDotQ2',[66,75]],['leftDotQ3',[83,75]],['rightDotQ1',[95,75]],['leftDotQ2',[112,75]],['rightDotQ2',[124,75]]]
-            tunnelingPairs = [[0,1],[2,3],[4,5],[6,7]]
         else:
             print "Error: Model Type not recognized."
         
@@ -130,7 +120,7 @@ class processData:
         if tunnelingPairs is None:
             tunnelingPairs = self.tunnelingPairs
         # First, calculate the target region centers based on the guesses provided:
-        self.findCenters()
+        #self.findCenters()
         self.identifyCenters(guesses)
 
         # Next, specify the watershed partition:
@@ -211,7 +201,7 @@ class processData:
             centerList += [average(array(partition),axis=0)]
         self.centerList = centerList
     def identifyCenters(self,guesses):
-        labelList = []
+        '''labelList = []
         self.identificationSuccess = True
         for guess in guesses:
             guessLabel = guess[0]
@@ -222,8 +212,8 @@ class processData:
             coordIndex = distanceList.index(min(distanceList))
             if min(distanceList)>20.0:
                 self.identificationSuccess = False
-            labelList += [[guessLabel,self.centerList[coordIndex]]]
-        self.labelList = labelList
+            labelList += [[guessLabel,self.centerList[coordIndex]]]'''
+        self.labelList = guesses#labelList
 ######################    End of Center-finding stuff
     
     def watershed(self):
@@ -251,16 +241,18 @@ class processData:
 #######  Computes the tunneling coefficient.
     def computeTunnelings(self,tunnelingPairs):
         self.Ts = []
-        for tunnelPair in tunnelingPairs:
-            potentialFunc = RectBivariateSpline(range(len(self.xVec)),range(len(self.yVec)),self.effectivePotential)
-            potentialFunc = vectorize(potentialFunc)
+        verbose=False
+        for i,tunnelPair in enumerate(tunnelingPairs):
+            verbose = (i==1)
+            potentialFunc = RectBivariateSpline(range(len(self.xVec)),range(len(self.yVec)),self.effectivePotential,kx=5,ky=5)
+            potentialFunc = potentialFunc.ev#vectorize(potentialFunc.ev)
             Lx = self.xVec[1]-self.xVec[0]
             Ly = self.yVec[1]-self.yVec[0]
             def bigT(points):
                 startY = points[1]; startX = points[0]
                 endY = points[3]; endX = points[2]
-                ySlice = linspace(startY,endY,100)
-                xSlice = linspace(startX,endX,100)
+                ySlice = linspace(startY,endY,1000)
+                xSlice = linspace(startX,endX,1000)
                 rSize = sqrt(((ySlice[0]-ySlice[1])*Ly)**2+((xSlice[0]-xSlice[1])*Lx)**2)
                 potentialSlice = potentialFunc(xSlice,ySlice)
                 def zeroThreshold(x):
@@ -274,6 +266,12 @@ class processData:
                 else:
                     # Note: I am abs'ing the trapz since the values of rSlice might run backwards
                     expFactor = exp(-2*abs(trapz(sqrt(2*self.mt/self.hbar**2*array(potentialSlice2)*self.q),dx=rSize*1e-9)))
+                    #if verbose:
+                    #print points, expFactor
+                        #print potentialSlice2
+                    #for num,p in enumerate(potentialSlice):
+                    #    print xSlice[num], ySlice[num], potentialSlice[num]
+                    #print int(endX),int(endY),self.effectivePotential[int(endX),int(endY)]
                     return expFactor
 
             startRegion = self.labelListRegions[tunnelPair[0]]
@@ -286,7 +284,8 @@ class processData:
                 endBooleanMap = map(lambda x: (x==endRegion).astype(float), self.watershedMap)
                 if startX >=len(self.xVec) or startX>=len(self.xVec) or endY>=len(self.yVec) or endY>=len(self.yVec):
                     return nan
-                if (1.0-startBooleanMap[int(startX)][int(startY)])>7e-2 or (1.0-endBooleanMap[int(endX)][int(endY)])>7e-2 or potentialFunc(endX,endY)>0.0 or potentialFunc(endX,endY)>0.0 :
+                if (1.0-startBooleanMap[int(startX)][int(startY)])>7e-2 or (1.0-endBooleanMap[int(endX)][int(endY)])>7e-2 or potentialFunc(startX,startY)>0.0 or potentialFunc(endX,endY)>0.0 :
+                    #print startX, startY, endX, endY, potentialFunc(startX,startY), potentialFunc(endX,endY)
                     return 2.0
                 else:
                     TVal = bigT(points)
@@ -294,6 +293,7 @@ class processData:
                         return 0.0
                     else:
                         return 1.0-TVal
+                    
             point0 = self.labelList[tunnelPair[0]][1]
             point1 = self.labelList[tunnelPair[1]][1]
             points = [point0[0],point0[1],point1[0],point1[1]]
@@ -303,46 +303,12 @@ class processData:
                 self.Ts += [0.0]
             else:
                 self.Ts += [1-minObj.fun]
+            #print minObj.x
+            #self.Ts +=[1.-objectiveFunc(points)]
 
-if __name__ == '__main__':
-    filename = str(sys.argv[1])
-    #
-    # 2 qubit, 4 dot barrier device
-    #
-    #print "Tunnel"
-    #guesses = [['leftDotQ1',[50,55]],['rightDotQ1',[75,55]],['leftDotQ2',[75,100]],['rightDotQ2',[100,100]]]
-    guesses = [['leftDot',[65,75]],['rightDot',[80,75]],['leftLead',[50,110]],['rightLead',[90,110]]]
-    
+def analyzeDataFile(filename):
     tunnelingPairs = [[0,1],[0,2],[1,3]]
-    
-    startTime = time.time() 
-    
-    procDat = processData(filename)
-    
-    procDat.processPotential(guesses,tunnelingPairs)
-    densities = procDat.densities
-    Ts = procDat.Ts
-    distinguishedRegions = len(set(procDat.labelListRegions))
-    densityString = ' '.join(map(lambda x:str(x),densities))
-    Tstring = ' '.join(map(lambda x:str(x),Ts))
-    writeString = densityString+' '+Tstring+'\n'
-    
-    ##outputFile = open('Output2.txt','r')
-    ##outputLines  = outputFile.readlines()
-    ##outputFile.close()
-    ##outputLines += [writeString]
-    ##outputFile = open('Output2.txt','w')
-    ##outputFile.writelines(outputLines)
-    ##outputFile.close()
-    #print 'Qubit 1: Detuning: '+str(procDat.detunings[0]-procDat.detunings[1])
-    #print 'Qubit 2: Detuning: '+str(procDat.detunings[2]-procDat.detunings[3])
-    sys.stdout.write(str(densities[0])+','+str(densities[1])+','+str(densities[2])+','+str(densities[3])+','+str(Ts[0])+','+str(Ts[1])+','+str(Ts[2]))
-    '''sys.stdout.write('Qubit 1: Left Dot: ' + str(densities[0]))
-    sys.stdout.write('Qubit 1: Right Dot: ' + str(densities[1]))
-    sys.stdout.write('Qubit 2: Left Lead: ' + str(densities[2]))
-    sys.stdout.write('Qubit 2: Right Lead: ' + str(densities[3]))
-    sys.stdout.write('Between Dots: ' + '%e'%(Ts[0]))
-    sys.stdout.write('Left Lead/Dot: ' + '%e'%(Ts[1]))
-    sys.stdout.write('Right Lead/Dot: ' + '%e'%(Ts[2]))    '''           
-    #print i
-    #print densityString + Tstring
+    procDat = processData(filename,0)
+    procDat.processPotential(None,tunnelingPairs)
+    return array(procDat.densities), array(procDat.Ts)
+

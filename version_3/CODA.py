@@ -2,7 +2,7 @@ from numpy import *
 import pymatlab
 from model import model
 from ReadOutput import processData
-from regularize import regularize
+#from regularize import regularize
 from numpy.linalg import norm
 from operator import add
 
@@ -11,6 +11,15 @@ dataFolder = '/home/frees/Dropbox/_UW/CODA/8Dot/Data'
 
 class TransmissionCoefficientError(Exception):
      pass
+
+def analyzeFile(filename,modelType=0):
+    procDat = processData(filename,modelType=modelType)
+    procDat.processPotential(None,None)
+    for i,transmission in enumerate(procDat.Ts):
+        if transmission <=1.e-8 or transmission >= 1.:
+            raise TransmissionCoefficientError('Transmission coefficient outside acceptable range. Coupling '+str(i)+' is '+str(transmission))
+    return procDat.densities, procDat.Ts
+
 
 def updateFiles(model, voltages, heightNum, runNum, sweepNum,modelType=0):
     model.exportData(dataFolder+'/height_'+str(heightNum)+'_run_'+str(runNum)+'.txt')

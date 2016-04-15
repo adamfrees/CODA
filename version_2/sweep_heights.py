@@ -48,15 +48,17 @@ if reloadData:
     for gateNum,gate in enumerate(order):
         dDot.setVoltage('pot'+str(gate),voltages[gateNum])
     runNum = (len(order)-1)*(sweepNum-1)
-    os.remove(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt')
+    #os.remove(dataFolder+'/height_'+str(heightNum)+'_sweep_'+str(sweepNum)+'.txt')
     dDot.changeHeight('wp4',height)
+    heightNum+=1#hack
 
 
 iterateHeight = True
 
 while iterateHeight:
     #If not the first height, find optimal height
-    if heightNum != 0 and not reloadData:
+    if heightNum != 0:# and not reloadData:
+        runNum = 0
         heightStep=0.001
         lookingForNewHeight = True
         numAttemptsNewHeight =0
@@ -74,7 +76,7 @@ while iterateHeight:
             if numAttemptsNewHeight>10:
                 raise TransmissionCoefficientError('Transmission coefficient failed to converge - failure in finding new height.')
         sweepNum = 0
-        runNum = 0
+        
 
     toWrite = str(heightNum)+': '+str(height)+'\n'        
     f = open(dataFolder+'/heightList.txt','a')

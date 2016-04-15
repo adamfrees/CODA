@@ -2,11 +2,11 @@ from numpy import *
 from sklearn import linear_model
 import csv
 import sys
-from time import time
+import cvxpy as cvx
 set_printoptions(precision=5,linewidth=1000,suppress=True)
 
 class regularize:
-    def __init__(self,inputFile,ind,logIndexList = []):
+    def __init__(self,inputFile,ind,logIndexList = [],leastSquares=False):
         dataFile = open(inputFile,"rb")
         data = reader=csv.reader(dataFile,delimiter=' ')
         x=list(reader)
@@ -14,15 +14,17 @@ class regularize:
         data=data[:,0:-1].astype('float')
         dataFile.close()
         self.X = data[:,:ind] #voltage data
+        #print sum(abs(self.X[0,:]))
         self.Y = data[:,ind:] #target data 
-        print self.X
-        print self.Y
+        #print self.X
         self.ind = ind
         self.dep =self.Y.shape[1]
         self.controlVecs = []
         self.logIndexList = logIndexList
         self.startDeps = []
+        self.leastSquares = leastSquares
         for index in logIndexList:
+            print log(self.Y[:,index])
             self.Y[:,index] = log(self.Y[:,index])
     
     def declareTarget(self,target):
@@ -54,25 +56,44 @@ class regularize:
         for y in nditer(self.Y, op_flags=['readwrite']):
             if y==-inf:
                 y[...] = -sys.float_info.max
-        print self.Y
         self.M = linalg.lstsq(self.X,self.Y)[0].T
-        print self.M
+        #print self.M
 
-    def compressedSense(self,alphaRange=[1e-5,1000.0],numSamples=700,max_iter=500000000,tol=1e-4):
+    def compressedSense(self,alphaRange=[1e-5,1000.0],numSamples=7000,max_iter=500000000,tol=1e-4):
         resultList = []
-        for alpha2 in logspace(log(alphaRange[0])/log(10),log(alphaRange[1])/log(10),numSamples):
-            startTime = time()
-            clf = linear_model.Lasso(alpha=alpha2,fit_intercept=False,max_iter=max_iter,tol=tol)
-            clf.fit(self.M,self.target)    
-            error = sum(abs(self.target-dot(array(self.M),clf.coef_.reshape((self.ind,1)))))
-            oneNorm = sum(abs(clf.coef_))
-            zeroNorm = linalg.norm(clf.coef_,ord=0)
-            resultList += [[alpha2,error,oneNorm,zeroNorm]]    
-            print "Finished",alpha2,error,oneNorm,zeroNorm,"Time:",time()-startTime,len(resultList)
-            self.controlVecs += [clf.coef_[:]]
+        if not self.leastSquares:
+            x = cvx.Variable(self.M.shape[1])
+            print self.M.shape[1]            
+            # Create two constraints.
+            constraints = [self.M*x == self.target]
+            
+            # Form objective.
+            obj = cvx.Minimize(cvx.norm1(x))
+            
+            # Form and solve problem.
+            prob = cvx.Problem(obj, constraints)
+            prob.solve()  # Returns the optimal value.
+            print "status:", prob.status
+            print "optimal value", prob.value
+            print "optimal var", x.value
+            for alpha2 in logspace(log(alphaRange[0])/log(10),log(alphaRange[1])/log(10),numSamples):
+                clf = linear_model.Lasso(alpha=alpha2,fit_intercept=False,max_iter=max_iter,tol=tol)
+                clf.fit(self.M,self.target)    
+                error = sum(abs(self.target.T-dot(array(self.M),clf.coef_.reshape((self.ind,1))).T))
+                oneNorm = sum(abs(clf.coef_))
+                zeroNorm = linalg.norm(clf.coef_,ord=0)
+                resultList += [[alpha2,error,oneNorm,zeroNorm]]    
+                self.controlVecs += [clf.coef_[:]]
+        else:
+            for alpha2 in logspace(log(alphaRange[0])/log(10),log(1.)/log(10),numSamples):
+                sol = array(linalg.lstsq(self.M,self.target)[0][0]).T*alpha2
+                error = 0.
+                oneNorm = sum(abs(sol))
+                zeroNorm = linalg.norm(sol,ord=0)
+                resultList += [[alpha2,error,oneNorm,zeroNorm]]
+                self.controlVecs += [sol]
         self.controlVecs = array(self.controlVecs)
         self.results = array(resultList)
-        print len(self.results)
         
 
     def createNormList(self):

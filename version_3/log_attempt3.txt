@@ -1,0 +1,177 @@
+COMSOL 5.0 (Build: 244) Multiphysics Server started listening on port 2036
+Use the console command 'close' to exit the program
+A client with username 'frees' has logged on to the server from 'obsidian' using port 2036
+Loading model: /home/frees/Dropbox/_UW/Scale-up/Comsol_test_1/var_height_3.mph (Model)
+First run:  513.426676035
+Subsequent 15 runs:  13718.543561
+3057.8744668
+Run number 16:  936.9748981
+Run number 17:  907.054629087
+Completed step 0
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.1738666007108919, -0.008800331582595593, -0.012, -0.09448342153959848, 0.06443221648564361, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.05539,     1.00364,  3001.60479,  3057.62694]), array([ 0.01129,  0.00839,  0.01019]))
+Current distance from target: 0.8587489539
+First run:  907.872256041
+Subsequent 15 runs:  15575.2280481
+3057.62694388
+Run number 16:  826.225635052
+Completed step 1
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.17149729179543885, -0.009091251732253568, -0.012, -0.09507098727755031, 0.06504439285718554, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.08111,     1.06664,  3003.06842,  3057.65076]), array([ 0.01126,  0.0097 ,  0.00893]))
+Current distance from target: 0.93366638295
+First run:  841.147882938
+Subsequent 15 runs:  14035.843215
+3057.65075821
+Run number 16:  869.108855009
+Completed step 2
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.17149729179543885, -0.009091251732253568, -0.012, -0.09507098727755031, 0.06516531645851106, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.08222,     1.0819 ,  3003.07008,  3057.77475]), array([ 0.01161,  0.01097,  0.00999]))
+Current distance from target: 0.973364938596
+First run:  832.341408968
+Subsequent 15 runs:  14129.5552649
+3057.77475091
+Run number 16:  1194.48300195
+Run number 17:  811.198590994
+Run number 18:  792.208072186
+Run number 19:  822.319856167
+Run number 20:  832.692183971
+Run number 21:  820.287085056
+Completed step 3
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.17149729179543885, -0.009161854925759468, -0.012, -0.09507098727755031, 0.06521927212510098, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.08053,     1.0858 ,  3003.00647,  3057.82643]), array([ 0.01118,  0.00953,  0.00967]))
+Current distance from target: 0.955709511736
+First run:  818.734476089
+Subsequent 15 runs:  13923.9822209
+3057.82643389
+Run number 16:  1313.77811623
+Run number 17:  1237.22181487
+Run number 18:  1306.31480408
+Run number 19:  1247.67756796
+Run number 20:  1328.90173411
+Run number 21:  1263.15551209
+Run number 22:  1251.76143289
+Run number 23:  874.404201031
+Run number 24:  902.379410028
+Run number 25:  849.307330847
+Run number 26:  846.083114862
+Run number 27:  876.654531956
+Run number 28:  856.45977211
+Run number 29:  853.574645042
+Run number 30:  879.537767887
+Run number 31:  874.032808065
+Run number 32:  928.372158051
+Run number 33:  899.180982828
+Run number 34:  855.211120129
+Run number 35:  875.477409124
+Run number 36:  913.493704081
+Run number 37:  894.754223108
+Run number 38:  858.569749117
+Run number 39:  880.428209066
+Run number 40:  861.500833035
+This is taking too long
+Completed step 4
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.17149729179543885, -0.00916185492575947, -0.012, -0.09507098727755031, 0.06525727387362408, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.08053,     1.0858 ,  3003.00647,  3057.82643]), array([ 0.01118,  0.00953,  0.00967]))
+Current distance from target: 0.955709511736
+First run:  1290.56315517
+Subsequent 15 runs:  13330.27987
+3057.8673582
+Run number 16:  1245.47126102
+Completed step 5
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.17149729179543885, -0.00934051913007337, -0.012, -0.09759694681779285, 0.06654561407414229, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.08368,     1.21729,  3002.84428,  3056.68155]), array([ 0.01148,  0.00772,  0.01276]))
+Current distance from target: 0.881577140806
+First run:  1245.46041298
+Subsequent 15 runs:  13072.8611839
+3056.68154834
+Run number 16:  1595.20185804
+Completed step 6
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.0722, -0.16947666837808534, -0.009954334799910518, -0.012, -0.09760270725729107, 0.06783596582911132, -0.4, -0.2, -0.25, -0.264, -0.2]
+yield the system state:
+(array([    1.09991,     1.35061,  3003.77683,  3057.99986]), array([ 0.01095,  0.00952,  0.01323]))
+Current distance from target: 0.775556650776
+First run:  1589.41845989
+Subsequent 15 runs:  13516.6162472
+3057.99986248
+Run number 16:  1695.92987299
+Run number 17:  1649.38068891
+Run number 18:  1657.76726317
+Run number 19:  1268.58703995
+Completed step 7
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.07219338958065401, -0.16947666837808534, -0.009954334799910518, -0.012, -0.09796621222759722, 0.06783596582911132, -0.4, -0.2, -0.25, -0.26412630509077767, -0.2]
+yield the system state:
+(array([    1.09671,     1.34401,  3003.76586,  3057.64098]), array([ 0.01062,  0.00982,  0.01203]))
+Current distance from target: 0.869586146822
+First run:  1261.90023208
+Subsequent 15 runs:  14081.4169011
+3057.64097475
+Run number 16:  1619.21114588
+Run number 17:  1675.29470301
+Completed step 8
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.07219338958065401, -0.16947666837808534, -0.010132791358885727, -0.012, -0.09897690601858758, 0.06864376636895712, -0.4, -0.2, -0.25, -0.26412630509077767, -0.2]
+yield the system state:
+(array([    1.09697,     1.42351,  3003.60716,  3057.47475]), array([ 0.01061,  0.00903,  0.01072]))
+Current distance from target: 0.889771679032
+First run:  1684.43340492
+Subsequent 15 runs:  14377.6215792
+3057.47474806
+Run number 16:  1571.18606901
+Run number 17:  1472.32136297
+Run number 18:  1553.282758
+Run number 19:  1653.11712217
+Run number 20:  1624.14909792
+Run number 21:  1633.56792212
+Run number 22:  1619.57643795
+Run number 23:  1597.2408309
+Run number 24:  1631.94374704
+Run number 25:  1636.535882
+Run number 26:  1622.91893101
+Run number 27:  1602.08511806
+Run number 28:  1600.82983518
+Run number 29:  1584.2197361
+Run number 30:  1603.886343
+Run number 31:  1608.62867308
+Run number 32:  1623.77496004
+Run number 33:  1597.14496207
+Run number 34:  1593.88870406
+Run number 35:  1573.76209807
+Run number 36:  1591.95243287
+Run number 37:  1588.95785499
+Run number 38:  1557.44611692
+Run number 39:  1571.84661484
+Run number 40:  1579.88384795
+This is taking too long
+Completed step 9
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.07219338958065401, -0.16947666837808534, -0.010827348136345076, -0.012, -0.09901828314248116, 0.07028477792637589, -0.4, -0.2, -0.25, -0.26412630509077767, -0.2]
+yield the system state:
+(array([    1.09697,     1.42351,  3003.60716,  3057.47475]), array([ 0.01061,  0.00903,  0.01072]))
+Current distance from target: 0.889771679032
+First run:  1489.71242189
+Subsequent 15 runs:  13418.9385202
+3059.27123158
+Run number 16:  1564.730618
+Run number 17:  1616.01128888
+Run number 18:  1581.98557401
+Completed step 10
+The voltages:
+[0.4, 0.45, 0.4, -0.4, 0.07314586075855918, -0.16947666837808534, -0.010783885858538456, -0.012, -0.09901828314248116, 0.07028477792637589, -0.4, -0.2, -0.25, -0.26412630509077767, -0.2]
+yield the system state:
+(array([    1.19951,     1.60457,  3003.86843,  3059.29263]), array([ 0.01204,  0.00556,  0.01271]))
+Current distance from target: 0.980854076773
+First run:  1549.31442714

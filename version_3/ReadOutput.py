@@ -104,11 +104,11 @@ class processData:
 				xDim = xHolder.shape[0]
 				yDim = yHolder.shape[0]
 				voltageHolder = zeros((xDim,yDim)); densityHolder = zeros((xDim,yDim))
-			elif line[1]=='-(V+0.0)':
+			elif line[1].startswith('-(V+0.0)'):
 				startReadingVoltage=True
 				yIndex=0; xIndex=0
 			elif line[1]=='Data': continue
-			elif line[1]=='2*0.19*me_const/(pi*hbar_const^2)*(e_const*(V+0.0))*(-0.0<V)':
+			elif line[1].startswith('2*0.19*me_const/(pi*hbar_const^2)*(e_const*(V+0.0))*(-0.0<V)'):
 				startReadingDensity=True
 				yIndex=0; xIndex=0
 			elif startReadingVoltage and not startReadingDensity:
