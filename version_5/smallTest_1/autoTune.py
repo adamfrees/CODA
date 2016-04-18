@@ -14,11 +14,15 @@ plotL1 = True
 autoTuneRunning = True
 autoTuneIteration = 0
 
-modelFile = '/Users/adamfrees/Dropbox/_UW/Scale-up/Comsol_test_1/simpleSingleDot.mph'
+modelFile = '/Users/adamfrees/Dropbox/_UW/Scale-up/Comsol_test_1/simpleSingleDot_w_high_Lead.mph'
 
 target = [2.]
 
-allHeightsStartingParams=[[30.,[0.190050340468617,-0.2,-0.2],'L1'],[32.,[0.20027523864318902,-0.2,-0.2],'L1'],[34.,[0.21058880122396614,-0.2,-0.2],'L1'],[36.,[0.221065369580485,-0.2,-0.2],'L1'],[38.,[0.23163401295215844,-0.2,-0.2],'L1']]
+#allHeightsStartingParams=[[30.,[0.190050340468617,-0.2,-0.2],'L1'],[32.,[0.20027523864318902,-0.2,-0.2],'L1'],[34.,[0.21058880122396614,-0.2,-0.2],'L1'],[36.,[0.221065369580485,-0.2,-0.2],'L1'],[38.,[0.23163401295215844,-0.2,-0.2],'L1']]#simpleSingleDot.mph
+#allHeightsStartingParams=[[30.,[0.13577273372369625,-0.2,-0.2],'L1'],[32.,[0.14137342528783453,-0.2,-0.2],'L1'],[34.,[0.14683575221584297,-0.2,-0.2],'L1'],[36.,[0.15213096912565122,-0.2,-0.2],'L1'],[38.,[0.15723684487136977,-0.2,-0.2],'L1']]#simpleSingleDot_w_Lead.mph#voltLead=0.6
+#allHeightsStartingParams=[[30.,[0.12558932329196001,-0.2,-0.2],'L1'],[32.,[0.1298659398614813,-0.2,-0.2],'L1'],[34.,[0.13402961795887958,-0.2,-0.2],'L1'],[36.,[0.13824949682438456,-0.2,-0.2],'L1'],[38.,[0.1423095716861876,-0.2,-0.2],'L1']]#simpleSingleDot_w_Lead.mph#voltLead=1.
+allHeightsStartingParams=[[30.,[0.1422856442898976,-0.2,-0.2],'L1'],[32.,[0.14873661066908628,-0.2,-0.2],'L1'],[34.,[0.1551211581300123,-0.2,-0.2],'L1'],[36.,[0.16143216556424986,-0.2,-0.2],'L1'],[38.,[0.16764987251535599,-0.2,-0.2],'L1']]#simpleSingleDot_w_high_Lead.mph#voltLead=0.6
+
 
 order=range(1,4)
 
@@ -34,7 +38,7 @@ for params in allHeightsStartingParams:
     #######################################
     method = params[2]
     height = params[0]
-    parentFolder = '/Users/adamfrees/Dropbox/_UW/CODA/version_5/SmallTest1/'+("%.0f" % height)+'nm'
+    parentFolder = '/Users/adamfrees/Dropbox/_UW/CODA/version_5/SmallTest1_w_high_Lead/'+("%.0f" % height)+'nm'
     if not os.path.exists(parentFolder):
             os.makedirs(parentFolder)
 
